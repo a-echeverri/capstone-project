@@ -6,10 +6,10 @@ class Drink(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
-    category = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.Text, nullable=False)
+    drink_category_id = db.Column(db.Integer, db.ForeignKey('drink_categories.id'), nullable=False)
+    description = db.Column(db.Text)
     ingredients = db.Column(db.String(50), nullable=False)
-    amount_unit = db.Column(db.String(50), nullable=False, unique=True)
+    amount_unit = db.Column(db.String(50), nullable=False)
     instructions = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String, nullable=False)
 
@@ -19,7 +19,7 @@ class Drink(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'category': self.category,
+            'drink_category_id': self.drink_category_id,
             'description': self.description,
             'ingredients': self.ingredients,
             'amount_unit': self.amount_unit,

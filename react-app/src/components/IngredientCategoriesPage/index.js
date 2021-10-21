@@ -1,27 +1,39 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCategoriesThunk } from "../../store/categories";
-import './CategoryList.css'
+import { getCategoriesThunk } from "../../store/ingredientCategories";
+// import './CategoryList.css'
 
-function IngredientCategoryList() {
+function IngredientCategoriesPage() {
   const dispatch = useDispatch()
-
+    console.log('dispatched')
   useEffect(() => {
-
+    console.log('entered useEffect')
     dispatch(getCategoriesThunk())
   }, [dispatch])
 
 
-  const categories = useSelector(state => state.categories.categories)
+//   console.log('inside useSelector', state.categories.ingredient_categories)
+    const categories = useSelector(state => state.categories.ingredient_categories)
+    console.log('categories', categories)
+    // const images = useSelector(state => state.categories.ingredient_categories)
+    // console.log('images', images)
   return(
     <div>
       <div className='category_nav_container'>
         <ul className='category_nav'>
           {categories?.map((category) => (
-            <Link key={category.id} to={`/categories/${category.id}`}><li>{category.name}</li></Link>
+            <>
+            <img key={category.image_url} src={category.image_url} alt=''/>
+            <Link key={category.id} to={`/ingredient-category/${category.id}`}><li>{category.name}</li></Link>
+            </>
           ))}
         </ul>
+        {/* <div>
+            {categories?.map((category) => (
+            <img key={category.id} src={category.image_url} alt=''/>
+            ))}
+        </div> */}
       </div>
     </div>
   )
@@ -29,4 +41,4 @@ function IngredientCategoryList() {
 
 }
 
-export default IngredientCategoryList;
+export default IngredientCategoriesPage;

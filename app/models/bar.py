@@ -5,8 +5,8 @@ class Bar(db.Model):
     __tablename__ = 'bars'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False, unique=True)
-    ingredient_id = db.Column(db.Integer, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, unique=True)
+    ingredient_id = db.Column(db.Integer,  db.ForeignKey('ingredients.id'), unique=True)
 
     # users = db.relationship("User", back_populates='bars')
 
