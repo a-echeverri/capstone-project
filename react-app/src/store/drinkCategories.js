@@ -1,8 +1,8 @@
-const GET_CATEGORIES = "categories/LOAD";
+const GET_DRINK_CATEGORIES = "categories/LOAD";
 const GET_SPECIFIC_DRINK= "drinks/GET_SPECIFIC_DRINK"
 
-const getCategoriesAction = (categories) => ({
-  type: GET_CATEGORIES,
+const getDrinkCategoriesAction = (categories) => ({
+  type: GET_DRINK_CATEGORIES,
   payload: categories,
 });
 
@@ -11,15 +11,15 @@ const getSpecificDrinkAction = (drinks) => ({
     payload: drinks,
   });
 
-export const getCategoriesThunk = () => async (dispatch) => {
-    console.log('entered categories thunk')
+export const getDrinkCategoriesThunk = () => async (dispatch) => {
+    console.log('entered drink categories thunk')
   const res = await fetch("/api/drinks/");
-  console.log('fetched categories')
+  console.log('fetched drink categories')
 
   if (res.ok) {
     console.log('response ok')
     let categories = await res.json();
-    dispatch(getCategoriesAction(categories));
+    dispatch(getDrinkCategoriesAction(categories));
   } 
 
   return res;
@@ -42,7 +42,7 @@ export const getSpecificDrinksThunk = (id) => async (dispatch) => {
 const initialState = {};
 export default function drinkCategoriesReducer(state = initialState, action) {
     switch (action.type) {
-    case GET_CATEGORIES:
+    case GET_DRINK_CATEGORIES:
         return action.payload;
     case GET_SPECIFIC_DRINK:
         return action.payload;

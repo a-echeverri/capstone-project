@@ -12,7 +12,7 @@ const getCategoryDrinksAction = (drinks) => ({
 })
 
 export const getDrinksThunk = () => async (dispatch) => {
-    console.log('entered drinks thunk')
+  console.log('entered drinks thunk')
   const res = await fetch("/api/drink-category/");
   console.log('fetched drinks')
 

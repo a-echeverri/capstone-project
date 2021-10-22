@@ -2,7 +2,7 @@ from colors import *
 from flask import Blueprint
 from app.models import Drink_Category, Drink
 
-drink_category_routes = Blueprint('category', __name__)
+drink_category_routes = Blueprint('drink_category', __name__)
 
 @drink_category_routes.route('/')
 def get_all_drink_categories():

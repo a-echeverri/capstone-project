@@ -11,6 +11,7 @@ import IngredientCategoriesPage from './components/IngredientCategoriesPage';
 import SpecificIngredientCategoryPage from './components/SpecificIngredientCategoryPage'
 import SpecificIngredientPage from './components/SpecificIngredientPage';
 import DrinkCategoriesPage from './components/DrinkCategoriesPage';
+import IngredientForm from './components/IngredientForm';
 import SpecificDrinkCategoryPage from './components/SpecificDrinkCategoryPage'
 import SpecificDrinkPage from './components/SpecificDrinkPage';
 import { authenticate } from './store/session';
@@ -49,10 +50,10 @@ function App() {
         <Route path='/drinks' exact={true}>
           <DrinkCategoriesPage />
         </Route>
-        {/* <Route path='/drink-category/:categoryId' exact={true}>
+        <Route path='/drink-category/:categoryId' exact={true}>
           <SpecificDrinkCategoryPage />
         </Route>
-        <Route path='/drinks/:drinkId' exact={true}>
+        {/* <Route path='/drinks/:drinkId' exact={true}>
           <SpecificDrinkPage />
         </Route> */}
         <Route path='/ingredients' exact={true}>
@@ -63,6 +64,9 @@ function App() {
         </Route>
         <Route path='/ingredients/:ingredientId' exact={true}>
           <SpecificIngredientPage />
+        </Route>
+        <Route path='/ingredients/new' exact={true}>
+          <IngredientForm />
         </Route>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
