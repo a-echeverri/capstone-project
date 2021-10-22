@@ -49,9 +49,9 @@ function App() {
         <Route path='/ingredient-category/:categoryId' exact={true}>
           <SpecificIngredientCategoryPage />
         </Route>
-        {/* <Route path='/ingredients/:ingredientId' exact={true}>
+        <Route path='/ingredients/:ingredientId' exact={true}>
           <SpecificIngredientPage />
-        </Route> */}
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>

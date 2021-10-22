@@ -9,7 +9,7 @@ class Drink_Category(db.Model):
     description = db.Column(db.Text)
     image_url = db.Column(db.String, nullable=False)
 
-    # drinks = db.relationship('Drink', back_populates='drink_categories')
+    drinks = db.relationship('Drink', back_populates='drink_categories')
 
 
     def to_dict(self):

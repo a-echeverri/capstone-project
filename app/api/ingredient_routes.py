@@ -8,7 +8,7 @@ def get_all_ingredients():
     '''
     Gets all ingredients
     '''
-    print('--------------entered all ingredient route /ingredients-category')
+    print('--------------entered all ingredient route /ingredient-category')
     ingredients = Ingredient.query.all()
     return {
         'ingredients': [ingredient.to_dict() for ingredient in ingredients]
@@ -28,7 +28,7 @@ def get_specific_ingredient_category(id):
     '''
     For getting all ingredients of a specific category
     '''
-    print('-----------------entered specific ingredient category route /ingredients-category/id')
+    print('-----------------entered specific ingredient category route /ingredient-category/id')
     ingredients = Ingredient.query.filter(Ingredient.ingredient_category_id == id).all()
     return {
         'ingredient': [ingredient.to_dict() for ingredient in ingredients]
