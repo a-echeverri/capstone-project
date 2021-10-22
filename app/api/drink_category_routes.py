@@ -1,3 +1,4 @@
+from colors import *
 from flask import Blueprint
 from app.models import Drink_Category, Drink
 
@@ -8,6 +9,7 @@ def get_all_drink_categories():
     '''
     Gets all drinks categories
     '''
+    print(CBLUEBG + "\n DATA: \n", 'entered all drink categories route /drinks', "\n" + CEND)
     print('-----------------entered all drink categories route /drinks')
     drink_categories = Drink_Category.query.all()
     return {

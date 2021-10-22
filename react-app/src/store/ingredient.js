@@ -27,7 +27,7 @@ export const getIngredientsThunk = () => async (dispatch) => {
 
 export const getCategoryIngredientsThunk = (id) => async (dispatch) => {
     console.log('entered category ingredients thunk')
-  const res = await fetch(`/api/ingredient-category/${id}`);
+  const res = await fetch(`/api/ingredient-category/${id}/`);
   console.log('fetched category ingredients')
 
   if (res.ok) {

@@ -9,8 +9,11 @@ class Drink(db.Model):
     # can update this to just category_id once drinks are made (column name)
     drink_category_id = db.Column(db.Integer, db.ForeignKey('drink_categories.id'), nullable=False)
     description = db.Column(db.Text)
-    ingredients = db.Column(db.String(50), nullable=False)
-    amount_unit = db.Column(db.String(50), nullable=False)
+    # trying nullable until ingredients idea
+    # ingredients = db.Column(db.String(50), nullable=False)
+    ingredients = db.Column(db.String(50))
+    amount_unit = db.Column(db.String(50))
+    # amount_unit = db.Column(db.String(50), nullable=False)
     instructions = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String, nullable=False)
 

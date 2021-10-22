@@ -1,19 +1,19 @@
 const GET_CATEGORIES = "categories/LOAD";
-const GET_SPECIFIC_INGREDIENT = "ingredients/GET_SPECIFIC_INGREDIENT"
+const GET_SPECIFIC_DRINK= "drinks/GET_SPECIFIC_DRINK"
 
 const getCategoriesAction = (categories) => ({
   type: GET_CATEGORIES,
   payload: categories,
 });
 
-const getSpecificIngredientAction = (ingredients) => ({
-    type: GET_SPECIFIC_INGREDIENT,
-    payload: ingredients,
+const getSpecificDrinkAction = (drinks) => ({
+    type: GET_SPECIFIC_DRINK,
+    payload: drinks,
   });
 
 export const getCategoriesThunk = () => async (dispatch) => {
     console.log('entered categories thunk')
-  const res = await fetch("/api/ingredients/");
+  const res = await fetch("/api/drinks/");
   console.log('fetched categories')
 
   if (res.ok) {
@@ -25,26 +25,26 @@ export const getCategoriesThunk = () => async (dispatch) => {
   return res;
 };
 
-export const getSpecificIngredientsThunk = (id) => async (dispatch) => {
-    console.log('entered specific ingredient thunk')
-     const res = await fetch(`/api/ingredients/${id}/`);
-    console.log('fetched specific ingredient')
+export const getSpecificDrinksThunk = (id) => async (dispatch) => {
+    console.log('entered specific drink thunk')
+     const res = await fetch(`/api/drinks/${id}/`);
+    console.log('fetched specific drink')
 
   if (res.ok) {
     console.log('response ok')
-    let ingredient = await res.json();
-    dispatch(getSpecificIngredientAction(ingredient));
+    let drink = await res.json();
+    dispatch(getSpecificDrinkAction(drink));
   } 
 
   return res;
 };
 
 const initialState = {};
-export default function categoriesReducer(state = initialState, action) {
+export default function drinkCategoriesReducer(state = initialState, action) {
     switch (action.type) {
     case GET_CATEGORIES:
         return action.payload;
-    case GET_SPECIFIC_INGREDIENT:
+    case GET_SPECIFIC_DRINK:
         return action.payload;
     default:
         return state;

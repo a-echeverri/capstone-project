@@ -10,6 +10,9 @@ import User from './components/User';
 import IngredientCategoriesPage from './components/IngredientCategoriesPage';
 import SpecificIngredientCategoryPage from './components/SpecificIngredientCategoryPage'
 import SpecificIngredientPage from './components/SpecificIngredientPage';
+import DrinkCategoriesPage from './components/DrinkCategoriesPage';
+import SpecificDrinkCategoryPage from './components/SpecificDrinkCategoryPage'
+import SpecificDrinkPage from './components/SpecificDrinkPage';
 import { authenticate } from './store/session';
 
 function App() {
@@ -43,6 +46,15 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/drinks' exact={true}>
+          <DrinkCategoriesPage />
+        </Route>
+        {/* <Route path='/drink-category/:categoryId' exact={true}>
+          <SpecificDrinkCategoryPage />
+        </Route>
+        <Route path='/drinks/:drinkId' exact={true}>
+          <SpecificDrinkPage />
+        </Route> */}
         <Route path='/ingredients' exact={true}>
           <IngredientCategoriesPage />
         </Route>
