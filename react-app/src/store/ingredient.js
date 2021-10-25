@@ -82,7 +82,7 @@ export const deleteIngredientThunk = (id) => async (dispatch) => {
 const initialState = {};
 export default function ingredientsReducer(state = initialState, action) {
     const newState = {...state}
-  switch (action.type) {
+    switch (action.type) {
     case GET_INGREDIENTS:
       return action.payload;
     case GET_INGREDIENTS_BY_CATEGORY:

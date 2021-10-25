@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getCategoriesThunk, get } from "../../store/ingredientCategories";
-import { createIngredientThunk, getCategoryIngredientsThunk, getIngredientsThunk} from "../../store/ingredient";
-import './IngredientForm.css'
+import { getDrinkCategoriesThunk } from "../../store/drinkCategories";
+import { createDrinkThunk, getCategoryDrinksThunk, getDrinksThunk} from "../../store/drink";
+import './DrinkForm.css'
 
-const IngredientForm = () => {
+const DrinkForm = () => {
   const [errors] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -16,20 +16,18 @@ const IngredientForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log('dispatched from')
+  console.log('dispatched')
 
   useEffect(() => {
-      dispatch(getCategoriesThunk())
-      console.log('get categories thunk')
-
+      dispatch(getDrinkCategoriesThunk())
   }, [dispatch])
 
   useEffect(() => {
-      dispatch(getIngredientsThunk())
+      dispatch(getDrinksThunk())
   }, [dispatch])
 
   useEffect(() => {
-    dispatch(getCategoryIngredientsThunk())
+    dispatch(getCategoryDrinksThunk())
 }, [dispatch])
 
   if (!user) {
@@ -40,19 +38,19 @@ const IngredientForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      const newIngredient = {
+      const newDrink = {
         name,
         description,
         image_url: image,
         user_id: user.id,
         categories_id: categoryId,
       }
-      const lastIngredient = await dispatch(createIngredientThunk(newIngredient));
-      history.push(`/ingredients/${lastIngredient.id}`)
+      const lastDrink = await dispatch(createDrinkThunk(newDrink));
+      history.push(`/drinks/${lastDrink.id}`)
     }
 
 return (
-    <form onSubmit={handleSubmit} className='ingredientForm'>
+    <form onSubmit={handleSubmit} className='drinkForm'>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -95,9 +93,9 @@ return (
           required={true}
         ></input>
       </div>
-      <button type="submit" className='submit-btn'>Create ingredient</button>
+      <button type="submit" className='submit-btn'>Create drink</button>
     </form>
   );
 };
 
-export default IngredientForm;
+export default DrinkForm;

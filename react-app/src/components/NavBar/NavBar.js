@@ -36,6 +36,10 @@ const NavBar = () => {
           <NavLink to='/ingredients' exact={true} activeClassName='active'>
             Ingredients
           </NavLink>
+        </li>        <li>
+          <NavLink to='/ingredients/new' exact={true} activeClassName='active'>
+            Add Ingredient
+          </NavLink>
         </li>
         {/* <li>
           <NavLink to='/ingredients-category/' exact={true} activeClassName='active'>

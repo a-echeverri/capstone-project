@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import current_user, login_required
 from app.models import Ingredient, db
 from app.forms import IngredientForm
+from colors import *
 
 ingredient_routes = Blueprint('ingredient', __name__)
 
@@ -42,15 +43,18 @@ def new_ingredient():
     """
     Creates a new ingredient if user is logged in
     """
+    print(CBLUEBG + "\n DATA: \n", 'POST ingredient categories route /drinks', "\n" + CEND)
     form = IngredientForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print(CBLUEBG + "\n DATA: \n", 'form validated', "\n" + CEND)
+
         data = form.data
         ingredient = Ingredient(name=data['name'],
                             description=data['description'],
-                            categories_id=data['categories_id'],
-                            user_id=current_user.get_id(),
-                            image_url=data['image_url'])
+                            ingredient_category_id=data['ingredient_category_id'],
+                            image_url=data['image_url'],
+                            user_id=current_user.get_id())
         db.session.add(ingredient)
         db.session.commit()
         return ingredient.to_dict()
