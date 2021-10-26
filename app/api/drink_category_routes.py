@@ -1,6 +1,8 @@
+from flask import Blueprint, request
+from flask_login import login_required, current_user
+from app.models import Drink_Category, Drink, db
+from app.forms import DrinkForm
 from colors import *
-from flask import Blueprint
-from app.models import Drink_Category, Drink
 
 drink_category_routes = Blueprint('drink_category', __name__)
 
@@ -38,3 +40,34 @@ def get_specific_drink(id):
     return drink.to_dict()
     # drinks = Drink.query.filter(Drink.id == id).first()
     # return drinks.to_dict()
+
+# api/drinks/new
+@drink_category_routes.route('/', methods=['POST'])
+@login_required
+def new_drink():
+    '''
+    Create a new drink
+    '''
+    print(CBLUEBG + "\n DATA: \n", 'entered new drink route /drinks/new', "\n" + CEND)
+    form = DrinkForm()
+    form['csrf_token'].data = request.form['csrf_token']
+    if form.validate():
+        print(CBLUEBG + "\n DATA: \n", 'form validated', "\n" + CEND)
+        data = form.data
+        drink = Drink(
+            name=data['name'],
+            description=data['description'],
+            drink_category_id=data['drink_category_id'],
+            image_url=data['image_url'],
+            user_id=current_user.id
+        )
+        db.session.add(drink)
+        db.session.commit()
+        return {
+            'message': 'Drink created successfully',
+            'drink': drink.to_dict()
+        }
+    return {
+        'message': 'Drink not created',
+        'errors': form.errors
+    }

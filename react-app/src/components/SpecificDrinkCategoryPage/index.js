@@ -14,7 +14,7 @@ function SpecificDrinkCategoryPage() {
   console.log('specific category entered useEffect')
 
     dispatch(getCategoryDrinksThunk(categoryId))
-    console.log('id', categoryId)
+    console.log('categoryId', categoryId)
   }, [dispatch, categoryId])
 
   // useEffect(() => {

@@ -12,7 +12,7 @@ const IngredientForm = () => {
   const [category, setCategoryId] = useState(null);
   const [image, setImage] = useState("")
   const user = useSelector((state) => state.session.user);
-  const categories = useSelector(store => store.ingredientCategories.ingredient_categories)
+  const categories = useSelector(store => store.ingredientCategories?.ingredient_categories)
   const dispatch = useDispatch();
   const { id } = useParams();
   const history = useHistory();

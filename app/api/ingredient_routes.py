@@ -44,29 +44,31 @@ def get_specific_ingredient(id):
 #         'ingredients': [ingredient.to_dict() for ingredient in ingredients]
 #     }
 
-# /api/ingredient-category/new
+# /api/ingredients/new
 @ingredient_routes.route('/', methods=['POST'])
 @login_required
 def new_ingredient():
     """
     Creates a new ingredient if user is logged in
     """
-    print(CBLUEBG + "\n DATA: \n", 'POST ingredient categories route /drinks', "\n" + CEND)
+    print(CBLUEBG + "\n DATA: \n", 'POST ingredient categories route /ingredients', "\n" + CEND)
     form = IngredientForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         print(CBLUEBG + "\n DATA: \n", 'form validated', "\n" + CEND)
-
         data = form.data
-        ingredient = Ingredient(name=data['name'],
-                            description=data['description'],
-                            ingredient_category_id=data['ingredient_category_id'],
-                            image_url=data['image_url'])
-                            # user_id=current_user.get_id())
+        ingredient = Ingredient(
+            name=data['name'],
+            description=data['description'],
+            ingredient_category_id=data['ingredient_category_id'],
+            image_url=data['image_url'])
+            # drink_id=data['drink_id'])
+            # user_id=current_user.get_id())
         db.session.add(ingredient)
         db.session.commit()
         return ingredient.to_dict()
     else:
         print('PROJECT FORM FAILED?')
         print(form.data)
+        print(form.errors)
         return form.errors

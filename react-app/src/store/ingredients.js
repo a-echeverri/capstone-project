@@ -125,8 +125,7 @@ export default function ingredientsReducer(state = initialState, action) {
     const newState = {...state}
     switch (action.type) {
     case GET_INGREDIENTS:
-      newState = action.payload;
-      return newState;
+      return action.payload;
     // case GET_INGREDIENTS_BY_CATEGORY:
     //   return action.payload;
     case GET_SPECIFIC_INGREDIENT:

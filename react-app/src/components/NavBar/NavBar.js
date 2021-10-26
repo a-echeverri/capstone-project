@@ -36,16 +36,17 @@ const NavBar = () => {
           <NavLink to='/ingredient-category' exact={true} activeClassName='active'>
             Ingredients
           </NavLink>
-        </li>        <li>
+        </li>        
+        <li>
+          <NavLink to='/drinks/new' exact={true} activeClassName='active'>
+            Add Drink
+          </NavLink>
+        </li>
+        <li>
           <NavLink to='/ingredients/new' exact={true} activeClassName='active'>
             Add Ingredient
           </NavLink>
-        </li>
-        {/* <li>
-          <NavLink to='/ingredients-category/' exact={true} activeClassName='active'>
-            Ingredients-Category
-          </NavLink>
-        </li> */}
+        </li>        
         <li>
           <LogoutButton />
         </li>

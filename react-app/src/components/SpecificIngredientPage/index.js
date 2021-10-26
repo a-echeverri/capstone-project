@@ -9,13 +9,12 @@ function SpecificIngredientPage() {
   const dispatch = useDispatch()
   const { ingredientId } = useParams();
   console.log('id', ingredientId)
-  const ingredients = useSelector((state) => state.ingredients.ingredient)
+  const ingredients = useSelector((state) => state.ingredients?.ingredient)
   console.log('ingredients', ingredients)
 
   useEffect(() => {
-    console.log('specific ing useEffect')
+    console.log('specific ingredient useEffect')
     dispatch(getSpecificIngredientThunk(ingredientId))
-    console.log('id', ingredientId)
   }, [dispatch, ingredientId])
 
 
