@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getDrinkCategoriesThunk } from "../../store/drinkCategories";
-import { createDrinkThunk, getCategoryDrinksThunk, getDrinksThunk} from "../../store/drink";
+import { createDrinkThunk, getCategoryDrinksThunk, getDrinksThunk} from "../../store/drinks";
 import './DrinkForm.css'
 
 const DrinkForm = () => {

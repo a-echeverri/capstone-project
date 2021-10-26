@@ -2,28 +2,29 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useHistory, useParams, Link } from "react-router-dom";
 // import { getCategoriesThunk } from "../../store/drinkCategories";
-import { getDrinksThunk, getCategoryDrinksThunk } from '../../store/drink'
+import { getDrinksThunk, getCategoryDrinksThunk } from '../../store/drinks'
 // import './CategoryList.css'
 
 function SpecificDrinkCategoryPage() {
   const dispatch = useDispatch()
-  const { id } = useParams();
-  console.log('specific dispatched')
+  const { categoryId } = useParams();
+  console.log('specific drink category entered')
 
   useEffect(() => {
   console.log('specific category entered useEffect')
 
-    dispatch(getCategoryDrinksThunk(id))
-  }, [dispatch, id])
+    dispatch(getCategoryDrinksThunk(categoryId))
+    console.log('id', categoryId)
+  }, [dispatch, categoryId])
 
-  useEffect(() => {
-    console.log('specific drink entered useEffect')
+  // useEffect(() => {
+  //   console.log('specific drink entered useEffect')
   
-      dispatch(getDrinksThunk())
-    }, [dispatch])
+  //     dispatch(getDrinksThunk())
+  //   }, [dispatch])
 
 //   console.log(state)
-  const drinks = useSelector(state => state.drinks.drinks)
+  const drinks = useSelector(state => state.drinks.drinks?.drinks)
   console.log('drinks', drinks)
  
   return(

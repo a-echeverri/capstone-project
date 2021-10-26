@@ -1,29 +1,32 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useHistory, useParams, Link } from "react-router-dom";
-// import { getCategoriesThunk } from "../../store/ingredientCategories";
-import { getIngredientsThunk, getCategoryIngredientsThunk } from '../../store/ingredient'
-// import './CategoryList.css'
+import { getCategoriesThunk } from "../../store/ingredientCategories";
+import { getCategoryIngredientsThunk } from "../../store/ingredientCategories";
+import { getIngredientsThunk } from '../../store/ingredients'
+// import {  getCategoryIngredientsThunk } from '../../store/ingredient'
 
 function SpecificIngredientCategoryPage() {
   const dispatch = useDispatch()
   const { id } = useParams();
-  console.log('specific dispatched')
+  console.log('specific ingcat dispatched')
+  console.log('id', id)
 
   useEffect(() => {
   console.log('specific category entered useEffect')
-
+  console.log('id', id)
     dispatch(getCategoryIngredientsThunk(id))
   }, [dispatch, id])
 
-  useEffect(() => {
-    console.log('specific ingredient entered useEffect')
+  // useEffect(() => {
+  //   console.log('specific ingredient entered  useEffect')
   
-      dispatch(getIngredientsThunk())
-    }, [dispatch])
+  //     dispatch(getIngredientsThunk())
+  //   }, [dispatch])
 
 //   console.log(state)
-  const ingredients = useSelector(state => state.ingredients.ingredients)
+  const categories = useSelector(state => state.ingredientCategories.ingredient_categories)
+  const ingredients = useSelector(state => state.ingredients?.ingredients)
   console.log('ingredients', ingredients)
  
   return(

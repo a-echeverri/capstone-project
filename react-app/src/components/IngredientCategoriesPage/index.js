@@ -14,8 +14,8 @@ function IngredientCategoriesPage() {
 
 
 //   console.log('inside useSelector', state.categories.ingredient_categories)
-    const categories = useSelector(state => state.categories.ingredient_categories)
-    console.log('categories', categories)
+    const categories = useSelector(state => state.ingredientCategories.ingredient_categories)
+    // console.log('ingredientcategories: categories', categories)
     // const images = useSelector(state => state.categories.ingredient_categories)
     // console.log('images', images)
   return(
@@ -25,7 +25,7 @@ function IngredientCategoriesPage() {
           {categories?.map((category) => (
             <>
             <img key={category.image_url} src={category.image_url} alt=''/>
-            <Link key={category.id} to={`/ingredient-category/${category.id}`}><li>{category.name}</li></Link>
+            <Link key={category?.id} to={`/ingredient-category/${category?.id}`}><li key={category.id}>{category.name}</li></Link>
             </>
           ))}
         </ul>

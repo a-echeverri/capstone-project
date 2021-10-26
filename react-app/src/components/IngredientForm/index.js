@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getCategoriesThunk, get } from "../../store/ingredientCategories";
-import { createIngredientThunk, getCategoryIngredientsThunk, getIngredientsThunk} from "../../store/ingredient";
+import { getCategoriesThunk, getCategoryIngredientsThunk } from "../../store/ingredientCategories";
+import { createIngredientThunk, getIngredientsThunk} from "../../store/ingredients";
 import './IngredientForm.css'
 
 const IngredientForm = () => {
   const [errors] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [categoryId, setCategoryId] = useState(null);
+  const [category, setCategoryId] = useState(null);
   const [image, setImage] = useState("")
   const user = useSelector((state) => state.session.user);
-  const categories = useSelector(store => store.categories.categories)
+  const categories = useSelector(store => store.categories?.ingredient_categories)
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log('dispatched from')
+  console.log('categories', categories)
 
   useEffect(() => {
       dispatch(getCategoriesThunk())
-      console.log('get categories thunk')
+      console.log('get categories thunk in form')
 
   }, [dispatch])
 
@@ -43,12 +43,16 @@ const IngredientForm = () => {
       const newIngredient = {
         name,
         description,
+        ingredient_category_id: category,
         image_url: image,
-        user_id: user.id,
-        categories_id: categoryId,
+        user_id: user.id
       }
+      console.log('new ingredient', newIngredient)
+
       const lastIngredient = await dispatch(createIngredientThunk(newIngredient));
-      history.push(`/ingredients/${lastIngredient.id}`)
+    //   history.push(`/ingredients/${lastIngredient.id}`)
+      history.push(`/ingredients`)
+
     }
 
 return (

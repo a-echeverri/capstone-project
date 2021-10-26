@@ -51,28 +51,28 @@ function App() {
         <Route path='/drinks/new' exact ={true}>
           <DrinkForm />
         </Route>
+        <Route path='/drinks/:drinkId' exact={true}>
+          <SpecificDrinkPage />
+        </Route>
         <Route path='/drinks' exact={true}>
           <DrinkCategoriesPage />
         </Route>
         <Route path='/drink-category/:categoryId' exact={true}>
           <SpecificDrinkCategoryPage />
         </Route>
-        {/* <Route path='/drinks/:drinkId' exact={true}>
-          <SpecificDrinkPage />
-        </Route> */}
-        <Route path='/ingredients/new' exact={true}>
-          <IngredientForm />
-        </Route>
-        <Route path='/ingredients' exact={true}>
-          <IngredientCategoriesPage />
-        </Route>
+ 
         <Route path='/ingredient-category/:categoryId' exact={true}>
           <SpecificIngredientCategoryPage />
+        </Route>
+        <Route path='/ingredient-category' exact={true}>
+          <IngredientCategoriesPage />
+        </Route>
+        <Route path='/ingredients/new' exact={true}>
+          <IngredientForm />
         </Route>
         <Route path='/ingredients/:ingredientId' exact={true}>
           <SpecificIngredientPage />
         </Route>
-
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>

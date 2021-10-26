@@ -14,7 +14,7 @@ function DrinkCategoriesPage() {
 
 
 //   console.log('inside useSelector', state.categories.drink_categories)
-    const categories = useSelector(state => state.categories.drink_categories)
+    const categories = useSelector(state => state.drinkCategories.drink_categories)
     console.log('categories', categories)
     // const images = useSelector(state => state.categories.drink_categories)
     // console.log('images', images)
@@ -25,7 +25,9 @@ function DrinkCategoriesPage() {
           {categories?.map((category) => (
             <>
             <img key={category.image_url} src={category.image_url} alt=''/>
-            <Link key={category.id} to={`/drink-category/${category.id}`}><li>{category.name}</li></Link>
+            <Link key={category?.id} to={`/drink-category/${category.id}`}>
+              <li key={category.name}>{console.log(category?.id)}{category.name}</li>
+            </Link>
             </>
           ))}
         </ul>
