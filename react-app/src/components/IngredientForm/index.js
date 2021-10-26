@@ -48,7 +48,7 @@ const IngredientForm = () => {
       console.log('last ingredient', lastIngredient);
       // console.log('last ingredient id', lastIngredient.id);
       // history.push(`/ingredients/${lastIngredient.id}`)
-      history.push(`/ingredients/new`)
+      history.push(`/ingredients`)
 
     }
 
