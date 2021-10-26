@@ -8,15 +8,14 @@ import { getIngredientsThunk } from '../../store/ingredients'
 
 function SpecificIngredientCategoryPage() {
   const dispatch = useDispatch()
-  const { id } = useParams();
+  const { categoryId } = useParams();
   console.log('specific ingcat dispatched')
-  console.log('id', id)
 
   useEffect(() => {
   console.log('specific category entered useEffect')
-  console.log('id', id)
-    dispatch(getCategoryIngredientsThunk(id))
-  }, [dispatch, id])
+  console.log('categoryId', categoryId)
+    dispatch(getCategoryIngredientsThunk(categoryId))
+  }, [dispatch, categoryId])
 
   // useEffect(() => {
   //   console.log('specific ingredient entered  useEffect')
@@ -25,8 +24,8 @@ function SpecificIngredientCategoryPage() {
   //   }, [dispatch])
 
 //   console.log(state)
-  const categories = useSelector(state => state.ingredientCategories.ingredient_categories)
-  const ingredients = useSelector(state => state.ingredients?.ingredients)
+  // const categories = useSelector(state => state.ingredientCategories.ingredient_categories)
+  const ingredients = useSelector(state => state.ingredients.ingredients?.ingredients)
   console.log('ingredients', ingredients)
  
   return(

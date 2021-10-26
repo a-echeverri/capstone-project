@@ -50,8 +50,6 @@ export const getCategoriesThunk = () => async (dispatch) => {
 export const getCategoryIngredientsThunk = (id) => async (dispatch) => {
     console.log("entered category ingredients thunk");
     const res = await fetch(`/api/ingredient-category/${id}`);
-    console.log("fetched category ingredients api");
-    console.log('res', res)
     if (res.ok) {
       console.log("ingredients response ok in store");
       let ingredients = await res.json();
@@ -70,7 +68,9 @@ export default function categoriesReducer(state = initialState, action) {
     // case GET_SPECIFIC_INGREDIENT:
     //     return action.payload;
     case GET_INGREDIENTS_BY_CATEGORY:
-        return action.payload;
+        return {
+            ingredients:action.payload
+        }
     default:
         return state;
     }
