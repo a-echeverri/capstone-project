@@ -28,7 +28,10 @@ const SpecificDrinkPage = () => {
                 <img className="drink-image" src={drinks?.image_url} alt=''/>
             </div>
             <div>
-                <h4 className="drink-title">{drinks?.description}</h4>
+                <p className="drink-description">{drinks?.description}</p>
+            </div>
+            <div className="drink-instructions-div">
+                <p className="drink-instructions">{drinks?.instructions}</p>
             </div>
         </div>
     );

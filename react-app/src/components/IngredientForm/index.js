@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getCategoriesThunk, getCategoryIngredientsThunk } from "../../store/ingredientCategories";
 import { createIngredientThunk, getIngredientsThunk} from "../../store/ingredients";
 import './IngredientForm.css'
@@ -12,25 +12,19 @@ const IngredientForm = () => {
   const [category, setCategoryId] = useState(null);
   const [image, setImage] = useState("")
   const user = useSelector((state) => state.session.user);
-  const categories = useSelector(store => store.categories?.ingredient_categories)
+  const categories = useSelector(store => store.ingredientCategories.ingredient_categories)
   const dispatch = useDispatch();
+  const { id } = useParams();
   const history = useHistory();
 
-  console.log('categories', categories)
+
+  // console.log('categories', categories)
 
   useEffect(() => {
       dispatch(getCategoriesThunk())
       console.log('get categories thunk in form')
 
   }, [dispatch])
-
-  useEffect(() => {
-      dispatch(getIngredientsThunk())
-  }, [dispatch])
-
-  useEffect(() => {
-    dispatch(getCategoryIngredientsThunk())
-}, [dispatch])
 
   if (!user) {
     // return <Redirect to="/login" />;
@@ -40,18 +34,21 @@ const IngredientForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+      console.log(category)
       const newIngredient = {
-        name,
-        description,
-        ingredient_category_id: category,
+        name: name,
+        description: description,
+        ingredient_category_id: +category,
         image_url: image,
-        user_id: user.id
+        // user_id: user.id
       }
       console.log('new ingredient', newIngredient)
 
       const lastIngredient = await dispatch(createIngredientThunk(newIngredient));
-    //   history.push(`/ingredients/${lastIngredient.id}`)
-      history.push(`/ingredients`)
+      console.log('last ingredient', lastIngredient);
+      // console.log('last ingredient id', lastIngredient.id);
+      // history.push(`/ingredients/${lastIngredient.id}`)
+      history.push(`/ingredients/new`)
 
     }
 
@@ -63,7 +60,6 @@ return (
         ))}
       </div>
       <div>
-          {console.log('form rendered')}
         <label>Name</label>
         <input
           type="text"

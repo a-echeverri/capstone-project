@@ -19,7 +19,7 @@ const getCategoryIngredientsAction = (ingredients) => ({
   });
 
 export const getCategoriesThunk = () => async (dispatch) => {
-    console.log('entered get categories thunk')
+    console.log('entered getCategories thunk')
   const res = await fetch("/api/ingredient-category");
   console.log('fetched categories')
 

@@ -86,10 +86,10 @@ export const getSpecificIngredientThunk = (id) => async (dispatch) => {
 //   return res;
 // };
 
-export const createIngredientThunk = (ingredient) => async (dispatch) => {
+export const createIngredientThunk = (ingredients) => async (dispatch) => {
   const response = await fetch("/api/ingredients/", {
     method: "POST",
-    body: JSON.stringify(ingredient),
+    body: JSON.stringify(ingredients),
     headers: {
       "Content-Type": "application/json",
     },
@@ -97,6 +97,7 @@ export const createIngredientThunk = (ingredient) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log("data", data);
     if (data.errors) {
       return;
     }
@@ -124,7 +125,8 @@ export default function ingredientsReducer(state = initialState, action) {
     const newState = {...state}
     switch (action.type) {
     case GET_INGREDIENTS:
-      return action.payload;
+      newState = action.payload;
+      return newState;
     // case GET_INGREDIENTS_BY_CATEGORY:
     //   return action.payload;
     case GET_SPECIFIC_INGREDIENT:

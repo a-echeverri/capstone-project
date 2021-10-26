@@ -60,7 +60,6 @@ function App() {
         <Route path='/drink-category/:categoryId' exact={true}>
           <SpecificDrinkCategoryPage />
         </Route>
- 
         <Route path='/ingredient-category/:categoryId' exact={true}>
           <SpecificIngredientCategoryPage />
         </Route>
