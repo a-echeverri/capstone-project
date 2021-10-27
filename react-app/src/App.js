@@ -12,6 +12,7 @@ import SpecificIngredientCategoryPage from './components/SpecificIngredientCateg
 import SpecificIngredientPage from './components/SpecificIngredientPage';
 import DrinkCategoriesPage from './components/DrinkCategoriesPage';
 import IngredientForm from './components/IngredientForm';
+import EditIngredientForm from './components/EditIngredientForm';
 import DrinkForm from './components/DrinkForm';
 import SpecificDrinkCategoryPage from './components/SpecificDrinkCategoryPage'
 import SpecificDrinkPage from './components/SpecificDrinkPage';
@@ -62,6 +63,9 @@ function App() {
         </Route>
         <Route path='/ingredients/new' exact={true}>
           <IngredientForm />
+        </Route>
+        <Route path='/ingredients/:ingredientId/edit' exact={true}>
+          <EditIngredientForm />
         </Route>
         <Route path='/ingredients/:ingredientId' exact={true}>
           <SpecificIngredientPage />

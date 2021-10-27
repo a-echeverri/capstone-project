@@ -108,8 +108,10 @@ export const createIngredientThunk = (ingredient) => async (dispatch) => {
 };
 
 export const updateIngredientThunk = (ingredient) => async (dispatch) => {
-    const response = await fetch(`/api/ingredients/${ingredient.id}`, {
-        method: "PATCH",
+    console.log("entered update ingredient thunk");
+    console.log("ingredient in thunk", ingredient);
+    const response = await fetch(`/api/ingredients/${ingredient.ingredientId}`, {
+        method: "PUT",
         body: JSON.stringify(ingredient),
         headers: {
             "Content-Type": "application/json",
@@ -118,6 +120,7 @@ export const updateIngredientThunk = (ingredient) => async (dispatch) => {
 
     if (response.ok) {
         const updatedIngredient = await response.json();
+        console.log("updated ingredient", updatedIngredient);
         dispatch(updateIngredientAction(updatedIngredient));
         return updatedIngredient;
     }
@@ -128,6 +131,8 @@ export const deleteIngredientThunk = (id) => async (dispatch) => {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
   });
+  console.log('id', id)
+  console.log('response', response)
 
   if (response.ok) {
     const project = await response.json();
@@ -153,6 +158,11 @@ export default function ingredientsReducer(state = initialState, action) {
         newState,
         ingredient: action.payload,
       };
+    case UPDATE_INGREDIENT:
+        return {
+            newState,
+            ingredient: action.payload,
+        };
     case DELETE_INGREDIENT:
       return {
         newState,
