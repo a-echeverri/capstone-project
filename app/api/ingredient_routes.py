@@ -45,7 +45,7 @@ def get_specific_ingredient(id):
 #     }
 
 # /api/ingredients/new
-@ingredient_routes.route('/', methods=['POST'])
+@ingredient_routes.route('', methods=['POST'])
 @login_required
 def new_ingredient():
     """
