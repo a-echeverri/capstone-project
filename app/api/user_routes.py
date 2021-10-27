@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Drink
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +17,9 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<int:id>/drinks')
+def get_user_projects(id):
+    drinks = Drink.query.filter(Drink.user_id == id).all()
+    print('------------drinks', drinks)
+    return {'drinks': [drink.to_dict() for drink in drinks]}

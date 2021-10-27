@@ -18,6 +18,7 @@ import EditDrinkForm from './components/EditDrinkForm';
 import SpecificDrinkCategoryPage from './components/SpecificDrinkCategoryPage'
 import SpecificDrinkPage from './components/SpecificDrinkPage';
 import { authenticate } from './store/session';
+import DrinkCard from './components/DrinkCard';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/drinks' exact={true} >
+          <DrinkCard />
         </ProtectedRoute>
         <Route path='/drinks/new' exact ={true}>
           <DrinkForm />

@@ -46,7 +46,8 @@ const SpecificDrinkPage = () => {
                 {/* {console.('drinks.name', drinks.drink_category_id)} */}
                 <div className='drink-content-container'>
                 <div className='drink-page-title'>
-                    <h2>{drinks?.name}</h2>
+                    <h1>{drinks?.name}</h1>
+                    <p>Created By: {user?.username}</p>
                 </div>
                 <div className='drink-image-container'>
                     <img className='drink-image' src={drinks?.image_url} alt="" />
@@ -55,7 +56,15 @@ const SpecificDrinkPage = () => {
                     <h4>{categories?.category}</h4>
                 </div>
                 <div>
-                    <h4 className="drink-description">{drinks?.description}</h4>
+                    <p className="drink-description">{drinks?.description}</p>
+                </div>
+                <div>
+                    <h4 className='drink-ingredients-title'>INGREDIENTS</h4>
+                    <p className="drink-ingredients">{drinks?.ingredients}</p>
+                </div>
+                <div>
+                    <h4 className="drink-instructions">INSTRUCTIONS</h4>
+                    <p className="drink-instructions">{drinks?.instructions}</p>
                 </div>
                 </div>
             </div>
