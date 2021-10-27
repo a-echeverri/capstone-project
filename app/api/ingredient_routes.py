@@ -7,7 +7,7 @@ from colors import *
 ingredient_routes = Blueprint('ingredient', __name__)
 
 # /api/ingredients
-@ingredient_routes.route('/')
+@ingredient_routes.route('')
 def get_all_ingredients():
     '''
     Gets all ingredients
@@ -61,9 +61,9 @@ def new_ingredient():
             name=data['name'],
             description=data['description'],
             ingredient_category_id=data['ingredient_category_id'],
-            image_url=data['image_url'])
+            image_url=data['image_url'],
             # drink_id=data['drink_id'])
-            # user_id=current_user.get_id())
+            user_id=current_user.get_id())
         db.session.add(ingredient)
         db.session.commit()
         return ingredient.to_dict()

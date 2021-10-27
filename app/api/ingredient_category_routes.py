@@ -7,7 +7,7 @@ from colors import *
 ingredient_category_routes = Blueprint('ingredient-category', __name__)
 
 # /api/ingredient-category
-@ingredient_category_routes.route('/')
+@ingredient_category_routes.route('')
 def get_all_ingredient_categories():
     '''
     Gets all ingredients categories

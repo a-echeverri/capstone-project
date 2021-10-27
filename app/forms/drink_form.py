@@ -4,10 +4,11 @@ from wtforms.validators import DataRequired
 
 class DrinkForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
+    drink_category_id = IntegerField('Category', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     # category = IntegerField('Category', validators=[DataRequired()])
-    drink_category_id = IntegerField('Category', validators=[DataRequired()])
     ingredients = StringField('Ingredients', validators=[DataRequired()])
+    amount_units = StringField('Amount/Units', validators=[DataRequired()])
     instructions = StringField('Instructions', validators=[DataRequired()])
     image_url = StringField('Image Url', validators=[DataRequired()])
     # submit = SubmitField('Submit')

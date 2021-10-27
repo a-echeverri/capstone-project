@@ -42,7 +42,7 @@ def get_specific_drink(id):
     # return drinks.to_dict()
 
 # api/drinks/new
-@drink_category_routes.route('/', methods=['POST'])
+@drink_category_routes.route('', methods=['POST'])
 @login_required
 def new_drink():
     '''
