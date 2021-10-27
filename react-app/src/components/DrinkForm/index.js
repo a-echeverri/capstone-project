@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getDrinkCategoriesThunk } from "../../store/drinkCategories";
-import { createDrinkThunk, getCategoryDrinksThunk, getDrinksThunk} from "../../store/drinks";
+import { createDrinkThunk} from "../../store/drinks";
 import './DrinkForm.css'
 
 const DrinkForm = () => {
   const [errors] = useState([]);
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [category, setCategoryId] = useState(null);
+  const [description, setDescription] = useState("");
   const [ingredients, setIngredients] = useState("");
+  const [amount_unit, setAmount_Unit] = useState("");
   const [instructions, setInstructions] = useState("");
   const [image, setImage] = useState("")
   const user = useSelector((state) => state.session.user);
-  const categories = useSelector(store => store.drinkCategories?.drink_categories)
+  const categories = useSelector(store => store.drinkCategories?.drink_categories);
   const dispatch = useDispatch();
   const history = useHistory();
-
 
 
   useEffect(() => {
@@ -40,19 +40,23 @@ const DrinkForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      const newDrink = {
-        name,
-        description,
-        image_url: image,
-        user_id: user.id,
-        drink_category_id: +category,
-        ingredients,
-        instructions
-      }
-      const lastDrink = await dispatch(createDrinkThunk(newDrink));
-      console.log('last drink', lastDrink)
-      // history.push(`/drinks/${lastDrink.id}`)
-      history.push(`/drinks`)
+    console.log('submit category', category)
+    const newDrink = {
+      name,
+      drink_category_id: +category,
+      description,
+      ingredients,
+      amount_unit,
+      instructions,
+      image_url: image,
+      user_id: user.id,
+    }
+    console.log('new drink', newDrink);
+
+    const lastDrink = await dispatch(createDrinkThunk(newDrink));
+    console.log('last drink', lastDrink);
+    history.push(`/drinks/${lastDrink.id}`)
+    // history.push(`/drinks`)
     }
 
 return (
@@ -69,6 +73,7 @@ return (
           name="name"
           onChange={(e) => { setName(e.target.value)}}
           value={name}
+          required={true}
         ></input>
       </div>
       <div>

@@ -6,6 +6,7 @@ import { getCategoriesThunk } from "../../store/ingredientCategories";
 // import './CategoryList.css'
 
 function SpecificIngredientPage() {
+  
   const dispatch = useDispatch()
   const history = useHistory()
   const { ingredientId } = useParams();
@@ -31,7 +32,7 @@ function SpecificIngredientPage() {
   function EditDeleteIngredient() {
     if (user && ingredients?.user_id === user?.id) {
       return (
-        <div className='edit-delete-container'>
+        <div className='edit-delete-ingredient-container'>
           <Link to={`/ingredients/${ingredientId}/edit`}>
             <button className="edit-button">Edit Ingredient</button>
           </Link>
@@ -39,10 +40,8 @@ function SpecificIngredientPage() {
         </div>
       )
     }
-    return null
+    return null;
   }
-
-
 
 
 //   const categories = useSelector(state => state.categories.ingredient_categories)
@@ -73,11 +72,8 @@ function SpecificIngredientPage() {
       <div className='ingredient-page-container'>
         <EditDeleteIngredient />
       </div>
-
     </div>
   )
-
-
 }
 
 export default SpecificIngredientPage;

@@ -51,11 +51,11 @@ def new_ingredient():
     """
     Creates a new ingredient if user is logged in
     """
-    print(CBLUEBG + "\n DATA: \n", 'POST ingredient categories route /ingredients', "\n" + CEND)
+    print(CBLUEBG + "\n POST: \n", 'entered new ingredient route /ingredients/new', "\n" + CEND)
     form = IngredientForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print(CBLUEBG + "\n DATA: \n", 'form validated', "\n" + CEND)
+        print(CBLUEBG + "\n POST: \n", 'form validated', "\n" + CEND)
         data = form.data
         ingredient = Ingredient(
             name=data['name'],
@@ -68,7 +68,7 @@ def new_ingredient():
         db.session.commit()
         return ingredient.to_dict()
     else:
-        print('PROJECT FORM FAILED?')
+        print('INGREDIENT FORM FAILED')
         print(form.data)
         return form.errors
 

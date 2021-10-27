@@ -2,6 +2,7 @@ const GET_DRINKS = "drinks/GET_DRINKS";
 const GET_DRINKS_BY_CATEGORY = 'drinks/GET_DRINKS_BY_CATEGORY';
 const GET_SPECIFIC_DRINK = 'drinks/GET_SPECIFIC_DRINK'
 const CREATE_DRINK = 'drinks/CREATE_DRINK';
+const UPDATE_DRINK = 'drinks/UPDATE_DRINK';
 const DELETE_DRINK = 'drinks/DELETE_DRINK';
 
 const getDrinksAction = (drinks) => ({
@@ -10,19 +11,25 @@ const getDrinksAction = (drinks) => ({
 });
 
 const getCategoryDrinksAction = (drinks) => ({
-    type: GET_DRINKS_BY_CATEGORY,
-    payload: drinks,
-});
-
-const getSpecificDrinkAction = (drinks) => ({
-  type: GET_SPECIFIC_DRINK,
+  type: GET_DRINKS_BY_CATEGORY,
   payload: drinks,
 });
 
+const getSpecificDrinkAction = (drink) => ({
+  type: GET_SPECIFIC_DRINK,
+  payload: drink,
+});
+
 const createDrinkAction = (drink) => ({
-    type: CREATE_DRINK,
-    payload: drink,
-  });
+  type: CREATE_DRINK,
+  payload: drink,
+});
+
+const updateDrinkAction = (drink) => ({
+  type: UPDATE_DRINK,
+  payload: drink,
+});
+
 
 export const getDrinksThunk = () => async (dispatch) => {
   console.log('entered getDrinks thunk')
@@ -53,7 +60,7 @@ export const getCategoryDrinksThunk = (id) => async (dispatch) => {
   return res;
 };
 
-export const getSpecificDrinksThunk = (id) => async (dispatch) => {
+export const getSpecificDrinkThunk = (id) => async (dispatch) => {
   console.log('entered specific drink thunk')
    const res = await fetch(`/api/drinks/${id}`);
   console.log('fetched specific drink')
@@ -79,6 +86,7 @@ export const createDrinkThunk = (drink) => async (dispatch) => {
   
     if (response.ok) {
       const data = await response.json();
+      console.log("data", data);
       if (data.errors) {
         return;
       }
@@ -87,19 +95,35 @@ export const createDrinkThunk = (drink) => async (dispatch) => {
       return data;
     }
   };
+
+export const updateDrinkThunk = (drink) => async (dispatch) => {
+  const response = await fetch(`/api/drinks/${drink.drinkId}`, {
+    method: "PUT",
+    body: JSON.stringify(drink),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const updatedDrink = await response.json();
+    dispatch(updateDrinkAction(updatedDrink));
+    return updatedDrink;
+  }
+};
   
-  export const deleteDrinkThunk = (id) => async (dispatch) => {
-      const response = await fetch(`/api/drinks/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
+export const deleteDrinkThunk = (id) => async (dispatch) => {
+  const response = await fetch(`/api/drinks/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    });
     
-      if (response.ok) {
-        const project = await response.json();
-        dispatch(getDrinksAction(id));
-        return project;
-      }
-    };
+    if (response.ok) {
+      const project = await response.json();
+      dispatch(getDrinksAction(id));
+      return project;
+    }
+};
 
 const initialState = {};
 export default function drinksReducer(state = initialState, action) {
@@ -108,20 +132,25 @@ export default function drinksReducer(state = initialState, action) {
     case GET_DRINKS:
         return {
           drinks:action.payload
-        }
+        };
     case GET_DRINKS_BY_CATEGORY:
         return {
           drinks:action.payload
-        }
+        };
     case GET_SPECIFIC_DRINK:
         return {
           drinks:action.payload
-        }
+        };
     case CREATE_DRINK:
         return {
             newState,
             drink: action.payload,
-        }
+        };
+    case UPDATE_DRINK:
+        return {
+            newState,
+            drink: action.payload,
+        };
     case DELETE_DRINK:
         return {
             newState,

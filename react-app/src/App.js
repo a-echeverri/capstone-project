@@ -14,6 +14,7 @@ import DrinkCategoriesPage from './components/DrinkCategoriesPage';
 import IngredientForm from './components/IngredientForm';
 import EditIngredientForm from './components/EditIngredientForm';
 import DrinkForm from './components/DrinkForm';
+import EditDrinkForm from './components/EditDrinkForm';
 import SpecificDrinkCategoryPage from './components/SpecificDrinkCategoryPage'
 import SpecificDrinkPage from './components/SpecificDrinkPage';
 import { authenticate } from './store/session';
@@ -51,6 +52,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/drinks/new' exact ={true}>
           <DrinkForm />
+        </Route>
+        <Route path='/drinks/:drinkId/edit' exact={true}>
+          <EditDrinkForm />
         </Route>
         <Route path='/drinks/:drinkId' exact={true}>
           <SpecificDrinkPage />
