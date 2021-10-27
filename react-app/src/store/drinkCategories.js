@@ -13,7 +13,7 @@ const getDrinkCategoriesAction = (categories) => ({
 
 export const getDrinkCategoriesThunk = () => async (dispatch) => {
     console.log('entered drink categories thunk')
-  const res = await fetch("/api/drinks/");
+  const res = await fetch("/api/drinks");
   console.log('fetched drink categories')
 
   if (res.ok) {

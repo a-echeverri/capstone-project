@@ -69,7 +69,7 @@ return res;
 };
 
 export const createDrinkThunk = (drink) => async (dispatch) => {
-    const response = await fetch("/api/drinks/", {
+    const response = await fetch("/api/drinks", {
       method: "POST",
       body: JSON.stringify(drink),
       headers: {

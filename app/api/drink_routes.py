@@ -5,7 +5,7 @@ from colors import *
 drink_routes = Blueprint('drink', __name__)
 
 # api/drink-category
-@drink_routes.route('/')
+@drink_routes.route('')
 def get_all_drinks():
     '''
     Gets all drinks
