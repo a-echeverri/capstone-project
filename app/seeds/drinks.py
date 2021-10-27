@@ -44,7 +44,7 @@ def seed_drinks():
                     instructions="Add the mint, cucumber, and orange slice to a shaker. Muddle, but not so energetically that you tear the mint into a million little pieces. Add ice to the shaker, as well as the vermouth and curaçao. Shake and strain into a tall ice-filled glass, and top with ginger beer. Garnish with mint, cucumber, and fruit.",
                     image_url='https://nxl6a8kxee-flywheel.netdna-ssl.com/wp-content/uploads/3-Cup.png',
                     user_id=3)
-    212 = Drink(name='212', drink_category_id=2, 
+    two = Drink(name='212', drink_category_id=2, 
                     description= 'The 212, from beverage consultants Aisha Sharpe and Willy Shine, is a wonderfully refreshing long drink that’s as easy to make as it is to sip.', 
                     instructions="Shake all ingredients with ice and strain into a tall ice-filled glass. Garnish with a twist of orange or grapefruit.",
                     image_url='https://nxl6a8kxee-flywheel.netdna-ssl.com/wp-content/uploads/212.png',
@@ -70,7 +70,7 @@ def seed_drinks():
     db.session.add(lady)
     db.session.add(arancia)
     db.session.add(cup)
-    db.session.add(212)
+    db.session.add(two)
     db.session.add(aloe)
     db.session.add(rose)
     db.session.add(absinthe)

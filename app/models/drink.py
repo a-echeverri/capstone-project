@@ -17,7 +17,8 @@ class Drink(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     drink_categories = db.relationship('Drink_Category', back_populates='drinks')
-
+    users = db.relationship('User', back_populates='drinks')
+    
     def to_dict(self):
         return {
             'id': self.id,
