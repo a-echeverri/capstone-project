@@ -59,16 +59,56 @@ def new_ingredient():
         data = form.data
         ingredient = Ingredient(
             name=data['name'],
-            description=data['description'],
             ingredient_category_id=data['ingredient_category_id'],
+            description=data['description'],
             image_url=data['image_url'],
-            # drink_id=data['drink_id'])
             user_id=current_user.get_id())
+            # drink_id=data['drink_id'])
         db.session.add(ingredient)
         db.session.commit()
         return ingredient.to_dict()
     else:
         print('PROJECT FORM FAILED?')
         print(form.data)
-        print(form.errors)
         return form.errors
+
+# /api/ingredients/:id/edit
+@ingredient_routes.route('/<int:id>', methods=['PATCH'])
+@login_required
+def update_ingredient(id):
+    """
+    Updates an ingredient if user is logged in
+    """
+    print(CBLUEBG + "\n DATA: \n", 'PATCH ingredient categories route /ingredients/:id', "\n" + CEND)
+    ingredient = Ingredient.query.filter(Ingredient.id == id).first()
+    form = IngredientForm()
+    if current_user.id == ingredient.user_id:
+    # if form.validate_on_submit():
+    #     print(CBLUEBG + "\n DATA: \n", 'form validated', "\n" + CEND)
+        form['csrf_token'].data = request.cookies['csrf_token']
+        data = form.data
+        ingredient.name = data['name'],
+        ingredient.ingredient_category_id = data['ingredient_category_id'],
+        ingredient.description = data['description'],
+        ingredient.image_url = data['image_url'],
+        ingredient.user_id = ingredient.user_id
+        db.session.commit()
+        return ingredient.to_dict()
+    else:
+        print(form.data)
+        return form.errors
+
+@ingredient_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_ingredient(id):
+    """
+    Deletes an ingredient if user is logged in
+    """
+    print(CBLUEBG + "\n DATA: \n", 'DELETE ingredient categories route /ingredients/:id', "\n" + CEND)
+    deleted_ingredient = Ingredient.query.filter(Ingredient.id == id).first()
+    if current_user.id == ingredient.user_id:
+        db.session.delete(deleted_ingredient)
+        db.session.commit()
+        return {
+            'deleted_ingredient': deleted_ingredient.to_dict()
+        }

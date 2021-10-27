@@ -12,9 +12,9 @@ class Ingredient(db.Model):
     image_url = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     # drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id'))
-    ingredient_categories = db.relationship('Ingredient_Category', back_populates='ingredients')
     
     # drinks = db.relationship('Drink', back_populates='ingredients')
+    ingredient_categories = db.relationship('Ingredient_Category', back_populates='ingredients')
     users = db.relationship('User', back_populates='ingredients')
 
     def to_dict(self):

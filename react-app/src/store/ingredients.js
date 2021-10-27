@@ -1,9 +1,9 @@
 const GET_INGREDIENTS = "ingredients/GET_INGREDIENTS";
-const GET_SPECIFIC_INGREDIENT = "ingredients/GET_SPECIFIC_INGREDIENT"
+const GET_SPECIFIC_INGREDIENT = "ingredients/GET_SPECIFIC_INGREDIENT";
 // const GET_INGREDIENTS_BY_CATEGORY = "ingredients/GET_INGREDIENTS_BY_CATEGORY";
-const CREATE_INGREDIENTS = "ingredients/CREATE_INGREDIENTS";
-const UPDATE_INGREDIENTS = "ingredients/UPDATE_INGREDIENTS";
-const DELETE_INGREDIENTS = "ingredients/DELETE_INGREDIENTS";
+const CREATE_INGREDIENT = "ingredients/CREATE_INGREDIENT";
+const UPDATE_INGREDIENT = "ingredients/UPDATE_INGREDIENT";
+const DELETE_INGREDIENT = "ingredients/DELETE_INGREDIENT";
 
 const getIngredientsAction = (ingredients) => ({
   type: GET_INGREDIENTS,
@@ -11,22 +11,22 @@ const getIngredientsAction = (ingredients) => ({
 });
 
 const getSpecificIngredientAction = (ingredient) => ({
-    type: GET_SPECIFIC_INGREDIENT,
-    payload: ingredient
+  type: GET_SPECIFIC_INGREDIENT,
+  payload: ingredient,
 });
 // const getCategoryIngredientsAction = (ingredients) => ({
 //   type: GET_INGREDIENTS_BY_CATEGORY,
 //   payload: ingredients,
 // });
 
-const createIngredientAction = (ingredients) => ({
-  type: CREATE_INGREDIENTS,
-  payload: ingredients,
+const createIngredientAction = (ingredient) => ({
+  type: CREATE_INGREDIENT,
+  payload: ingredient,
 });
 
-const updateIngredientsAction = (ingredients) => ({
-  type: UPDATE_INGREDIENTS,
-  payload: ingredients,
+const updateIngredientAction = (ingredient) => ({
+  type: UPDATE_INGREDIENT,
+  payload: ingredient,
 });
 
 // export const getCategoriesThunk = () => async (dispatch) => {
@@ -38,7 +38,7 @@ const updateIngredientsAction = (ingredients) => ({
 //     console.log('response ok')
 //     let categories = await res.json();
 //     dispatch(getCategoriesAction(categories));
-//   } 
+//   }
 
 //   return res;
 // };
@@ -58,15 +58,15 @@ export const getIngredientsThunk = () => async (dispatch) => {
 };
 
 export const getSpecificIngredientThunk = (id) => async (dispatch) => {
-    console.log('entered specific ingredient thunk')
-     const res = await fetch(`/api/ingredients/${id}`);
-    console.log('fetched specific ingredient')
+  console.log("entered specific ingredient thunk");
+  const res = await fetch(`/api/ingredients/${id}`);
+  console.log("fetched specific ingredient");
 
   if (res.ok) {
-    console.log('specific ingredient response ok')
+    console.log("specific ingredient response ok");
     let ingredient = await res.json();
     dispatch(getSpecificIngredientAction(ingredient));
-  } 
+  }
 
   return res;
 };
@@ -86,10 +86,10 @@ export const getSpecificIngredientThunk = (id) => async (dispatch) => {
 //   return res;
 // };
 
-export const createIngredientThunk = (ingredients) => async (dispatch) => {
-  const response = await fetch("/api/ingredients/", {
+export const createIngredientThunk = (ingredient) => async (dispatch) => {
+  const response = await fetch("/api/ingredients", {
     method: "POST",
-    body: JSON.stringify(ingredients),
+    body: JSON.stringify(ingredient),
     headers: {
       "Content-Type": "application/json",
     },
@@ -107,41 +107,57 @@ export const createIngredientThunk = (ingredients) => async (dispatch) => {
   }
 };
 
-export const deleteIngredientThunk = (id) => async (dispatch) => {
-    const response = await fetch(`/api/ingredients/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+export const updateIngredientThunk = (ingredient) => async (dispatch) => {
+    const response = await fetch(`/api/ingredients/${ingredient.id}`, {
+        method: "PATCH",
+        body: JSON.stringify(ingredient),
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
-  
+
     if (response.ok) {
-      const project = await response.json();
-      dispatch(getIngredientsAction(id));
-      return project;
+        const updatedIngredient = await response.json();
+        dispatch(updateIngredientAction(updatedIngredient));
+        return updatedIngredient;
     }
-  };
+};
+
+export const deleteIngredientThunk = (id) => async (dispatch) => {
+  const response = await fetch(`/api/ingredients/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    const project = await response.json();
+    dispatch(getIngredientsAction(id));
+    return project;
+  }
+};
 
 const initialState = {};
 export default function ingredientsReducer(state = initialState, action) {
-    const newState = {...state}
-    switch (action.type) {
+  const newState = { ...state };
+  switch (action.type) {
     case GET_INGREDIENTS:
       return action.payload;
     // case GET_INGREDIENTS_BY_CATEGORY:
     //   return action.payload;
     case GET_SPECIFIC_INGREDIENT:
-        return {
-            ingredient: action.payload
-        };
-    case CREATE_INGREDIENTS:
-        return {
-            newState,
-            ingredients: action.payload,
-        }
-    case DELETE_INGREDIENTS:
-        return {
-            newState,
-            ingredients: action.payload
-        }
+      return {
+        ingredient: action.payload,
+      };
+    case CREATE_INGREDIENT:
+      return {
+        newState,
+        ingredient: action.payload,
+      };
+    case DELETE_INGREDIENT:
+      return {
+        newState,
+        ingredient: action.payload,
+      };
     default:
       return state;
   }

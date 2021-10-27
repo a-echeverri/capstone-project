@@ -37,18 +37,18 @@ const IngredientForm = () => {
       console.log(category)
       const newIngredient = {
         name: name,
-        description: description,
         ingredient_category_id: +category,
+        description: description,
         image_url: image,
-        // user_id: user.id
+        user_id: user.id
       }
       console.log('new ingredient', newIngredient)
 
       const lastIngredient = await dispatch(createIngredientThunk(newIngredient));
       console.log('last ingredient', lastIngredient);
-      // console.log('last ingredient id', lastIngredient.id);
-      // history.push(`/ingredients/${lastIngredient.id}`)
-      history.push(`/ingredients`)
+      console.log('last ingredient id', lastIngredient.id);
+      history.push(`/ingredients/${lastIngredient.id}`)
+      // history.push(`/ingredients`)
 
     }
 
@@ -66,6 +66,7 @@ return (
           name="name"
           onChange={(e) => { setName(e.target.value)}}
           value={name}
+          required={true}
         ></input>
       </div>
       <div>
@@ -75,6 +76,7 @@ return (
           name="description"
           onChange={(e) => { setDescription(e.target.value)}}
           value={description}
+          required={true}
         ></input>
       </div>
       <div>
