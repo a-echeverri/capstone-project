@@ -1,30 +1,50 @@
 .homepage{
-	display: block;
+	display: block
+
 }
 
 .homepage-content{
     display: block;
 	/* background-image: url("./\home_splash.gif");  */
 	/* background-size: fill; */
+	background-image: url('../../\main-bg@2x.png');
 	width: 100%;
 	height: 100%;
+
+}
+
+.app-name-div{
 }
 .app-name-container {
-	color: #444444;
-    font-family: 'Roboto Slab', serif;
+	color: rgb(251, 242, 234);
+    font-family: 'Yellowtail', serif;
     display: flex;
 	justify-content: center;
 	font-size: 50px;
 	font-weight: 500;
 }
 
+.homepage-text-div{
+	display: flex;
+	text-indent: 10%;
+	width: 100%;
+}
+
 .homepage-text {
-	display: block;
-    margin: 1.5em auto .3em;
+	display: flex;
+    margin: 15px 15px;
 	justify-content: center;
 	font-family: 'Roboto Slab', serif;
-	color: #444444;
+	color: rgb(251, 242, 234);
 	font-size: 18px;
+}
+
+.homepage-image-div{
+	background-image: url('./\Manhattan-Riffs.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height: 500px;
+	width: 500px;
 }
 .homepage-text2 {
 	display: flex;
