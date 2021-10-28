@@ -47,7 +47,7 @@ const SpecificDrinkPage = () => {
                 <div className='drink-content-container'>
                 <div className='drink-page-title'>
                     <h1>{drinks?.name}</h1>
-                    <p>Created By: {user?.username}</p>
+                    {/* <p>Created By: {drinks?.username}</p> */}
                 </div>
                 <div className='drink-image-container'>
                     <img className='drink-image' src={drinks?.image_url} alt="" />

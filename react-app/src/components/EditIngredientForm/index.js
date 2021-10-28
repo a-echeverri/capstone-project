@@ -10,7 +10,7 @@ const EditIngredientForm = () => {
     const user = useSelector((state) => state.session.user);
     const categories = useSelector(store => store.ingredientCategories?.ingredient_categories)
     const { ingredientId } = useParams();
-    const [errors] = useState([]);
+    const [errors, setErrors] = useState([]);
     const [name, setName] = useState(ingredient?.name);
     const [description, setDescription] = useState(ingredient?.description);
     const [category, setCategoryId] = useState(ingredient?.ingredient_category_id);

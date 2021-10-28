@@ -6,7 +6,7 @@ import { createDrinkThunk} from "../../store/drinks";
 import './DrinkForm.css'
 
 const DrinkForm = () => {
-  const [errors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
   const [category, setCategoryId] = useState(null);
   const [description, setDescription] = useState("");
