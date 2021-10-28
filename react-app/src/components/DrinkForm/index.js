@@ -107,6 +107,7 @@ return (
         <label>Category</label>
         <select
           name="category"
+          defaultValue="0"
           onChange={(e) => { setCategoryId(e.target.value)}}
         >{categories?.map((category) => (<option key={category.id} value={category.id}>{category.name}</option>))}
         </select>

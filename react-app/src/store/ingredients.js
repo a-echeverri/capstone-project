@@ -97,9 +97,9 @@ export const createIngredientThunk = (ingredient) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log("data", data);
+    console.log("create thunk data", data);
     if (data.errors) {
-      return;
+      return data.errors;
     }
 
     dispatch(createIngredientAction(data));

@@ -67,10 +67,10 @@ def new_ingredient():
         db.session.add(ingredient)
         db.session.commit()
         return ingredient.to_dict()
-    else:
-        print('INGREDIENT FORM FAILED')
-        print(form.data)
-        return form.errors
+    # else:
+    print('INGREDIENT FORM FAILED')
+    print(form.data)
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # /api/ingredients/:id/edit
 @ingredient_routes.route('/<int:id>', methods=['PUT'])
@@ -111,3 +111,13 @@ def delete_ingredient(id):
         return {
             'deleted_ingredient': deleted_ingredient.to_dict()
         }
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages

@@ -6,7 +6,7 @@ import { createIngredientThunk, getIngredientsThunk} from "../../store/ingredien
 import './IngredientForm.css'
 
 const IngredientForm = () => {
-  const [errors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategoryId] = useState(null);
@@ -34,7 +34,7 @@ const IngredientForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      console.log(category)
+      console.log('category', category)
       const newIngredient = {
         name: name,
         ingredient_category_id: +category,
@@ -43,11 +43,12 @@ const IngredientForm = () => {
         user_id: user.id
       }
       console.log('new ingredient', newIngredient)
-
-      const lastIngredient = await dispatch(createIngredientThunk(newIngredient));
-      console.log('last ingredient', lastIngredient);
-      console.log('last ingredient id', lastIngredient.id);
-      history.push(`/ingredients/${lastIngredient.id}`)
+      setErrors([]);
+      const data = await dispatch(createIngredientThunk(newIngredient));
+      console.log('last ingredient', data);
+      if (data){
+      history.push(`/ingredients/${data.id}`)
+      }
       // history.push(`/ingredients`)
 
     }
@@ -66,7 +67,6 @@ return (
           name="name"
           onChange={(e) => { setName(e.target.value)}}
           value={name}
-          required={true}
         ></input>
       </div>
       <div>
@@ -76,7 +76,6 @@ return (
           name="description"
           onChange={(e) => { setDescription(e.target.value)}}
           value={description}
-          required={true}
         ></input>
       </div>
       <div>
@@ -94,7 +93,7 @@ return (
           type="text"
           onChange={(e) => { setImage(e.target.value)}}
           value={image}
-          required={true}
+          // required={true}
         ></input>
       </div>
       <button type="submit" className='submit-btn'>Create ingredient</button>
