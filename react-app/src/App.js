@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+// import LoginForm from './components/auth/LoginForm';
+// import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -19,6 +19,7 @@ import SpecificDrinkCategoryPage from './components/SpecificDrinkCategoryPage'
 import SpecificDrinkPage from './components/SpecificDrinkPage';
 import { authenticate } from './store/session';
 import DrinkCard from './components/DrinkCard';
+import HomePage from './components/HomePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,11 +40,8 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+        <Route path='/' exact={true} >
+          <HomePage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -54,12 +52,12 @@ function App() {
         <ProtectedRoute path='/users/:userId/drinks' exact={true} >
           <DrinkCard />
         </ProtectedRoute>
-        <Route path='/drinks/new' exact ={true}>
+        <ProtectedRoute path='/drinks/new' exact ={true}>
           <DrinkForm />
-        </Route>
-        <Route path='/drinks/:drinkId/edit' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/drinks/:drinkId/edit' exact={true}>
           <EditDrinkForm />
-        </Route>
+        </ProtectedRoute>
         <Route path='/drinks/:drinkId' exact={true}>
           <SpecificDrinkPage />
         </Route>
@@ -69,12 +67,12 @@ function App() {
         <Route path='/drink-category/:categoryId' exact={true}>
           <SpecificDrinkCategoryPage />
         </Route>
-        <Route path='/ingredients/new' exact={true}>
+        <ProtectedRoute path='/ingredients/new' exact={true}>
           <IngredientForm />
-        </Route>
-        <Route path='/ingredients/:ingredientId/edit' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/ingredients/:ingredientId/edit' exact={true}>
           <EditIngredientForm />
-        </Route>
+        </ProtectedRoute>
         <Route path='/ingredients/:ingredientId' exact={true}>
           <SpecificIngredientPage />
         </Route>
@@ -84,9 +82,6 @@ function App() {
         <Route path='/ingredient-category/:categoryId' exact={true}>
           <SpecificIngredientCategoryPage />
         </Route>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

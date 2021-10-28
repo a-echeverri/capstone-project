@@ -1,0 +1,35 @@
+.homepage{
+	display: block;
+}
+
+.homepage-content{
+    display: block;
+	/* background-image: url("./\home_splash.gif");  */
+	/* background-size: fill; */
+	width: 100%;
+	height: 100%;
+}
+.app-name-container {
+	color: #444444;
+    font-family: 'Roboto Slab', serif;
+    display: flex;
+	justify-content: center;
+	font-size: 50px;
+	font-weight: 500;
+}
+
+.homepage-text {
+	display: block;
+    margin: 1.5em auto .3em;
+	justify-content: center;
+	font-family: 'Roboto Slab', serif;
+	color: #444444;
+	font-size: 18px;
+}
+.homepage-text2 {
+	display: flex;
+	justify-content: center;
+	color: #444444;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+}

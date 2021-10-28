@@ -1,4 +1,8 @@
 /* TODO Add site wide styles */
 body {
+    margin: 0;
     background-color: #fbf2ea;
+    list-style-type: none;
+    color: rgb(68,68,68);
+    display: block;
 }

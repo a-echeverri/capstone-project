@@ -1,1 +1,226 @@
 
+a {
+    list-style: none;
+    list-style-type: none;
+    color:#cec2ab;
+    text-decoration: none;
+    display: list-item;
+    font-weight: bold;
+    font-size: 16px;
+    
+  }
+  
+  ul {
+    list-style: none;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    
+  }
+  /* p#selected-recommend-title p:hover{
+    text-decoration-line: underline;
+  } */
+  
+  .navbar{
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 0;
+      padding-left: 15px;
+      padding-right: 15px;
+      background: rgb(51, 43, 39);
+      height:56px;
+
+
+  }
+
+  .navbar-container {
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 55px;
+    border-bottom: 0.1rem solid #DCDEDD;
+    font-size: 16px;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(51, 43, 39);
+  }
+  
+  .navbar-container a:hover{
+    color: white
+  }
+  
+  .navbar-header {
+    /* display: flex;
+    width: 10%;
+    width: 180px;
+    font-size: 175%;
+    padding: 0;
+    color:#656969 */
+    display:flex;
+    width: 166px;
+    position: relative;
+    float: right;
+    /* margin-right: 15px; */
+    /* padding: 9px 10px; */
+    /* margin-top: 8px; */
+    /* margin-bottom: 8px; */
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    /* border-radius: 4px; */
+  }
+  
+  .navbar-button {
+    display: flex;
+    align-items: flex-start;
+    background: none;
+    border: none;
+    text-decoration: none;
+    color:  rgb(0,0,0,0);
+    cursor: pointer;
+    /* margin-bottom: 8px; */
+    /* margin-top: 8px; */
+    /* margin-right: 15px; */
+    /* margin-left: 0px; */
+    font-family: 'Yellowtail', cursive;
+  }
+  
+  
+  .navbar-brand{
+    font-size: 28px;
+    color: #fbf2ea;
+    /* position: relative; */
+    /* top: -2px; */
+    /* float: left; */
+    /* padding: 15px 15px; */
+    /* height: 50px; */
+    /* margin-left: -15px; */
+
+  }
+ 
+  .nav-bar-center {
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-around;
+    font-family: 'Roboto Slab', serif;
+  }
+
+  .nav-bar-right {
+    display: flex;
+    width: 20%;
+    font-family: 'Roboto Slab', serif;
+  }
+
+  .login-menu-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 221.91px;
+    height: 45px;
+    font-family: 'Roboto Slab', serif;
+
+  }
+
+  .user-container {
+    display: flex;
+    flex-direction: row;
+    /* width: 30%; */
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    /* color:  #cec2ab; */
+    font-size: 16px;
+    font-family: 'Roboto Slab', serif;
+
+  }
+
+  .start-project-button:hover{
+    color: white
+  }
+  
+ 
+  
+  /* .nav-bar-center-logo{
+    display: flex;
+    width: 180px;
+  } */
+  
+  /* .nav-bar-logo-button{
+    width: 180px;
+    height: 22.16px;
+    background-size:100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-around;
+    border: none;
+    background-color: transparent;
+  } */
+  
+
+
+  .user-button{
+    background-color: transparent;
+    border: none;
+
+  }
+  .user-button a{
+    color:#cec2ab;
+    /* color:  #282828; */
+    font-size: 16px;
+  }
+
+  .logout-button {
+    background-color: transparent;
+    border: none;
+    color: #cec2ab;
+    font-size: 16px;
+  }
+
+  .logout-button:hover{
+    color: white;
+  }
+  
+
+  .login-menu-right button{
+    display: flex;
+    border: none;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #cec2ab;
+    font-size: 16px;
+    font-family: 'Roboto Slab', serif;
+
+  }
+
+  /* .nav-bar-right button {
+    background: none;
+    border: none;
+    text-decoration: none;
+    color:  #282828;
+    cursor: pointer;
+    font-size: 14px;
+  } */
+/*   
+  .nav-bar-right button:hover {
+    color: #037362
+  } */
+
+  
+  .login-menu-right button:hover {
+    color: white;
+  
+  }
+  

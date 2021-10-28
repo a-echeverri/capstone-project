@@ -25,7 +25,7 @@ const IngredientForm = () => {
       console.log('get categories thunk in form')
 
   }, [dispatch])
-
+ 
   if (!user) {
     // return <Redirect to="/login" />;
     // return <LoginForm />
