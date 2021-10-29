@@ -51,7 +51,7 @@ const EditDrinkForm = () => {
     };
     console.log("updated drink", updatedDrink);
 
-    dispatch(updateDrinkThunk(updatedDrink));
+    await dispatch(updateDrinkThunk(updatedDrink));
     history.push(`/drinks/${drink.id}`);
     // history.push(`/drinks`)
   };

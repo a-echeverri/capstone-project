@@ -8,12 +8,12 @@ import './DrinkForm.css'
 const DrinkForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
-  const [category, setCategoryId] = useState(null);
+  const [category, setCategoryId] = useState(1);
   const [description, setDescription] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [amount_unit, setAmount_Unit] = useState("");
   const [instructions, setInstructions] = useState("");
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState("");
   const user = useSelector((state) => state.session.user);
   const categories = useSelector(store => store.drinkCategories?.drink_categories);
   const dispatch = useDispatch();
@@ -107,7 +107,7 @@ return (
         <label>Category</label>
         <select
           name="category"
-          defaultValue="0"
+          defaultValue="1"
           onChange={(e) => { setCategoryId(e.target.value)}}
         >{categories?.map((category) => (<option key={category.id} value={category.id}>{category.name}</option>))}
         </select>

@@ -45,7 +45,7 @@ const EditIngredientForm = () => {
         }
           console.log('updated ingredient', updatedIngredient)
     
-          dispatch(updateIngredientThunk(updatedIngredient));
+          await dispatch(updateIngredientThunk(updatedIngredient));
           history.push(`/ingredients/${ingredient.id}`)
           // history.push(`/ingredients`)
     

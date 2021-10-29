@@ -9,12 +9,12 @@ const IngredientForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategoryId] = useState(null);
-  const [image, setImage] = useState("")
+  const [category, setCategoryId] = useState(1);
+  const [image, setImage] = useState("");
   const user = useSelector((state) => state.session.user);
   const categories = useSelector(store => store.ingredientCategories?.ingredient_categories)
-  const dispatch = useDispatch();
   const { id } = useParams();
+  const dispatch = useDispatch();
   const history = useHistory();
 
 
@@ -34,7 +34,7 @@ const IngredientForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      console.log('category', category)
+      console.log(category)
       const newIngredient = {
         name: name,
         ingredient_category_id: +category,
@@ -82,6 +82,7 @@ return (
         <label>Category</label>
         <select
           name="category"
+          defaultValue="1"
           onChange={(e) => { setCategoryId(e.target.value)}}
         >{categories?.map((category) => (<option key={category.id} value={category.id}>{category.name}</option>))}
         </select>
