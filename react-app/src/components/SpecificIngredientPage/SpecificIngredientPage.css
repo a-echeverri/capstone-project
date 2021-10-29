@@ -2,10 +2,10 @@
     text-indent: 500px
 }
 
-.drink_nav_container{
+.ingredient_nav_container{
     margin: 0px 150px;
 }
-.drink-content-container{
+.ingredient-content-container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,11 +16,16 @@
     margin: 0px;
 }
 
-.drink-instructions-div {
+/* .ingredient-image{
+    width: 200px;
+    height: 200px;
+} */
+
+.ingredient-instructions-div {
     text-indent: 50%
 }
 
-.edit-delete-drink-container{
+.edit-delete-ingredient-container{
     display: flex;
     justify-content: space-AROUND;
     align-items: center;
@@ -28,13 +33,13 @@
 
 }
 
-.edit-drink-button{
+.edit-ingredient-button{
     border: none;
     background-color: #c5ab14;
     color: white;
 }
 
-.delete-drink-button{
+.delete-ingredient-button{
     border: none;
     background-color: #c51414;
     color: white

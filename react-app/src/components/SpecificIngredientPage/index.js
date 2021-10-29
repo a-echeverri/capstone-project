@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { getSpecificIngredientThunk, deleteIngredientThunk } from "../../store/ingredients";
 import { getCategoriesThunk } from "../../store/ingredientCategories";
-// import './CategoryList.css'
+import './SpecificIngredientPage.css'
 
 function SpecificIngredientPage() {
   
@@ -34,9 +34,9 @@ function SpecificIngredientPage() {
       return (
         <div className='edit-delete-ingredient-container'>
           <Link to={`/ingredients/${ingredientId}/edit`}>
-            <button className="edit-button">Edit Ingredient</button>
+            <button className="edit-ingredient-button">Edit Ingredient</button>
           </Link>
-          <button className="delete-button" onClick={() => handleDelete(ingredientId)}>Delete Ingredient</button>
+          <button className="delete-ingredient-button" onClick={() => handleDelete(ingredientId)}>Delete Ingredient</button>
         </div>
       )
     }
@@ -63,15 +63,11 @@ function SpecificIngredientPage() {
             <h4 className="ingredient-description">{ingredients?.description}</h4>
         </div>
           </div>
-        {/* <ul className='category_nav'>
-          {categories?.map((category) => (
-            <Link key={category.id} to={`/categories/${category.id}`}><li>{category.name}</li></Link>
-          ))}
-        </ul> */}
+          <div className='ingredient-page-container'>
+            <EditDeleteIngredient />
+          </div>
       </div>
-      <div className='ingredient-page-container'>
-        <EditDeleteIngredient />
-      </div>
+
     </div>
   )
 }

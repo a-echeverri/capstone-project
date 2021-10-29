@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getSpecificDrinkThunk, deleteDrinkThunk } from '../../store/drinks';
+import './SpecificDrinkPage.css'
 
 const SpecificDrinkPage = () => {
     
@@ -45,32 +46,33 @@ const SpecificDrinkPage = () => {
             <div className='drink_nav_container'>
                 {/* {console.('drinks.name', drinks.drink_category_id)} */}
                 <div className='drink-content-container'>
-                <div className='drink-page-title'>
-                    <h1>{drinks?.name}</h1>
-                    {/* <p>Created By: {drinks?.username}</p> */}
-                </div>
-                <div className='drink-image-container'>
-                    <img className='drink-image' src={drinks?.image_url} alt="" />
-                </div>
-                <div className='drink-category-container'>
-                    <h4>{categories?.category}</h4>
-                </div>
-                <div>
-                    <p className="drink-description">{drinks?.description}</p>
-                </div>
-                <div>
-                    <h4 className='drink-ingredients-title'>INGREDIENTS</h4>
-                    <p className="drink-ingredients">{drinks?.ingredients}</p>
-                </div>
-                <div>
-                    <h4 className="drink-instructions">INSTRUCTIONS</h4>
-                    <p className="drink-instructions">{drinks?.instructions}</p>
-                </div>
+                    <div className='drink-page-title'>
+                        <h1>{drinks?.name}</h1>
+                        {/* <p>Created By: {drinks?.username}</p> */}
+                    </div>
+                    <div className='drink-image-container'>
+                        <img className='drink-image' src={drinks?.image_url} alt="" />
+                    </div>
+                    <div className='drink-category-container'>
+                        <h4>{categories?.category}</h4>
+                    </div>
+                    <div>
+                        <p className="drink-description">{drinks?.description}</p>
+                    </div>
+                    <div>
+                        <h4 className='drink-ingredients-title'>INGREDIENTS</h4>
+                        <p className="drink-ingredients">{drinks?.ingredients}</p>
+                    </div>
+                    <div>
+                        <h4 className="drink-instructions">INSTRUCTIONS</h4>
+                        <p className="drink-instructions">{drinks?.instructions}</p>
+                    </div>
+                    <div className='drink-page-container'>
+                        <EditDeleteDrink />
+                    </div>
                 </div>
             </div>
-            <div className='drink-page-container'>
-                <EditDeleteDrink />
-            </div>
+
         </div>
     );
 };
