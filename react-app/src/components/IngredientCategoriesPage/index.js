@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCategoriesThunk } from "../../store/ingredientCategories";
-// import './CategoryList.css'
-
+import './IngredientCategoriesPage.css'
 function IngredientCategoriesPage() {
   const dispatch = useDispatch()
     console.log('dispatched')
