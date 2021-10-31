@@ -1,0 +1,47 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 55px;
+    position: absolute;
+    bottom: 40px;
+    color: black;
+}
+  
+.follow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 150px;
+    font-size: 30px;
+    /* height: 25px; */
+}
+  
+/* .follow > p {
+      height: 15px;
+      font-size: 20px;
+} */
+  
+.footer-members {
+    display: flex;
+}
+
+.footer-item a{
+      margin: 5px 15px 0;
+      font-size: 15px;
+      font-family: 'Roboto', sans-serif;
+      color: rgb(68,68,68);
+}
+
+.github-logo{
+    color: rgb(68,68,68)
+}
+
+  
+@media screen and (max-height: 850px) {
+      .footer {
+      display: none;
+    }
+}

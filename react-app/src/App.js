@@ -20,6 +20,7 @@ import SpecificDrinkPage from './components/SpecificDrinkPage';
 import { authenticate } from './store/session';
 import DrinkCard from './components/DrinkCard';
 import HomePage from './components/HomePage';
+import AboutFooter from './components/AboutFooter';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +43,7 @@ function App() {
       <Switch>
         <Route path='/' exact={true} >
           <HomePage />
+          <AboutFooter />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

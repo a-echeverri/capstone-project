@@ -1,10 +1,11 @@
 .homepage{
-	display: block
-
+	display:flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .homepage-content{
-    display: block;
+    /* display: block; */
 	/* background-image: url("./\home_splash.gif");  */
 	/* background-size: fill; */
 	background-image: url('../../\main-bg@2x.png');
@@ -14,6 +15,7 @@
 }
 
 .app-name-div{
+	margin: 0px;
 }
 .app-name-container {
 	color: rgb(251, 242, 234);
@@ -40,14 +42,15 @@
 }
 
 .homepage-image-div{
-	display: flex;
+	/* display: flex; */
 	justify-content: center;
 	align-items: center;
 	background-image: url('./\Manhattan-Riffs.png');
 	background-size: 100%;
 	background-repeat: no-repeat;
 	height: 500px;
-	width: 500px;
+	width: 100%;
+	max-width: 1000px;
 }
 .homepage-text2 {
 	display: flex;
