@@ -18,6 +18,12 @@ form.signup-form {
     margin: 0px 15px 15px 0px;
 }
 
+.errors {
+    color: red;
+    font-size: 14px;
+    margin: 0px 0px 15px 0px;
+}
+
 .email-label{
     display: flex;
     flex-direction: column;
@@ -27,7 +33,7 @@ form.signup-form {
 .username-label{
     display: flex;
     flex-direction: column;    
-    margin: 5px 0px 5px 50px;
+    margin: 5px 50px 5px 50px;
 }
 
 .password-label{

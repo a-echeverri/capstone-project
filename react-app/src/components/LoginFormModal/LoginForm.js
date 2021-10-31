@@ -36,12 +36,12 @@ const LoginForm = () => {
       <h2>Welcome Back!</h2> 
       <h4>Let's make some drinks</h4>
     <form className="login-form" onSubmit={onLogin}>
-      <div>
+      <div className="errors">
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div className="username-label">
+      <div className="email-label">
         <label htmlFor='email'>Email</label>
         <input
           name='email'
