@@ -16,8 +16,30 @@
     margin: 0px;
 }
 
-.drink-instructions-div {
-    text-indent: 50%
+.drink-ingredients-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    height: 75%;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.drink-instructions-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    height: 75%;
+    padding: 0px;
+    margin: 0px;
+}
+.drink-instructions {
+    text-indent: 15px;
 }
 
 .edit-delete-drink-container{

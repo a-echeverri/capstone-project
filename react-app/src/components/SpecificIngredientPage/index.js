@@ -56,9 +56,6 @@ function SpecificIngredientPage() {
           <div className='ingredient-image-container'>
             <img className='ingredient-image' src={ingredients?.image_url} alt="" />
           </div>
-          <div className='ingredient-category-container'>
-            <h4>{categories?.category}</h4>
-          </div>
           <div>
             <h4 className="ingredient-description">{ingredients?.description}</h4>
         </div>

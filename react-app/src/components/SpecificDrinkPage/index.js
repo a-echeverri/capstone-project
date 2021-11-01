@@ -53,17 +53,14 @@ const SpecificDrinkPage = () => {
                     <div className='drink-image-container'>
                         <img className='drink-image' src={drinks?.image_url} alt="" />
                     </div>
-                    <div className='drink-category-container'>
-                        <h4>{categories?.category}</h4>
-                    </div>
                     <div>
                         <p className="drink-description">{drinks?.description}</p>
                     </div>
-                    <div>
+                    <div className='drink-ingredients-container'>
                         <h4 className='drink-ingredients-title'>INGREDIENTS</h4>
                         <p className="drink-ingredients">{drinks?.ingredients}</p>
                     </div>
-                    <div>
+                    <div className='drink-instructions-container'>
                         <h4 className="drink-instructions">INSTRUCTIONS</h4>
                         <p className="drink-instructions">{drinks?.instructions}</p>
                     </div>
