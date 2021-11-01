@@ -42,3 +42,9 @@ designing the front end, React's powerful HTML syntax was used along with CSS to
 
 ## Future Features
 * I would like to implement a way to save cocktails to favorites for easy viewing in your profile. Also the ability to get recommendations based on what ingredients are in your favorites.
+
+## Contact
+
+Andres Echeverri:
+* Email - aecheverri43@gmail.com
+* LinkedIn - https://www.linkedin.com/in/andresecheverri
