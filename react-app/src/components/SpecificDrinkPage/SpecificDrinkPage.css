@@ -16,10 +16,19 @@
   margin: 0px;
 }
 
+.drink-page-title{
+    font-family: 'Yellowtail', cursive;
+    font-size: 50px;
+    color: rgb(68, 68, 68);
+    margin-bottom: 0px;
+    height: 200px;
+}
 .drink-description-container {
   display: flex;
   flex-direction: column;
   text-indent: 15px;
+  color:rgb(68, 68, 68);
+  font-family: 'Roboto', san-serif;
 }
 
 .drink-ingredients-container {
