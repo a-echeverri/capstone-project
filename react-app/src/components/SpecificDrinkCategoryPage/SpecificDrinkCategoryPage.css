@@ -38,12 +38,6 @@
     padding: 0px 32px 96px 32px;
 }
 
-.drink_category_nav a {
-    text-decoration: none;
-    color: rgb(68, 68, 68);
-    font-family: 'Roboto', sans-serif;
-}
-
 .drink-category-nav-container{
     margin: 0px 124.5px 0px 124.5px;
 }
@@ -73,9 +67,15 @@
 
 
 .drink_category_nav a{
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+    font-family: 'Roboto', sans-serif;
     width: 150px;
     height: 178px;
     margin: 0px 48px 48px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 

@@ -35,14 +35,12 @@ function SpecificDrinkCategoryPage() {
           <h1 className='drinks-header'>Drinks</h1>
         </div>
         <div className='drink_category_nav'>
-          <ul className='drink_category_nav'>
           {drinks?.map((drink) => (
-            <Link key={drink.id} to={`/drinks/${drink.id}`}>
+            <a key={drink.id} href={`/drinks/${drink.id}`}>
               <img key={drink.image_url} src={drink.image_url} alt=''/>
               <h4>{drink.name}</h4>
-            </Link>
+            </a>
           ))}
-        </ul>
         </div>
     </div>
    </div>

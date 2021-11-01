@@ -46,13 +46,14 @@ function SpecificIngredientCategoryPage() {
           <h1 className='ingredients-header'>Ingredient</h1> 
         </div>
         <div className='ingredient_category_nav'>
-          <ul className='ingredient-category-nav'>
+  
           {ingredients?.map((ingredient) => (
-            <Link className='ingredient_a' key={ingredient?.id.toString()} to={`/ingredients/${ingredient.id}`}><img key={ingredient.image_url} src={ingredient.image_url} alt=''/>
-              <h4>{ingredient.name}</h4>
-            </Link> 
+            <a className='ingredient_a' key={ingredient?.id.toString()} href={`/ingredients/${ingredient.id}`}>
+              <img key={ingredient.image_url} src={ingredient.image_url} alt=''/>
+              <h4 className='ingredient-name'>{ingredient.name}</h4>
+            </a> 
           ))}
-          </ul>
+        
         </div>
       </div>
     </div>

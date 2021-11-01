@@ -5,8 +5,8 @@
 } */
 
 .ingredient_category_nav img {
-    width: auto;
-    height: 150px;
+    width: 50px;
+    height: auto;
 /*     
     display: flex;
     align-items: flex-end;
@@ -31,7 +31,7 @@
     font-family: 'Yellowtail', cursive;
 }
 
-.ingredient-category-nav {
+.ingredient_category_nav {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -43,8 +43,11 @@
     color: rgb(68, 68, 68);
     font-family: 'Roboto', sans-serif;
     width: 150px;
-    height: 178px;
+    height: auto;
     margin: 0px 48px 48px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* .category_nav_container{
@@ -67,6 +70,7 @@
     color: rgb(68, 68, 68);
     font-family: 'Yellowtail', cursive;
     font-size: 80px;
+    display: flex;
     margin-bottom: 0px;
 }
 
@@ -76,7 +80,7 @@
 
 
 .category_nav img{
-    width: 150px;
+    width: autopx;
     height: 150px;
 }
 
@@ -90,4 +94,17 @@
     text-decoration: none;
     color: rgb(68, 68, 68);
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.ingredient_category_header h1 {
+    color: rgb(68, 68, 68);
+    font-family: 'Yellowtail', cursive;
+    font-size: 80px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
 }
