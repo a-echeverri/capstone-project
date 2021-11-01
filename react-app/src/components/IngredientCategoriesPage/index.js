@@ -1,38 +1,31 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getCategoriesThunk } from "../../store/ingredientCategories";
 import './IngredientCategoriesPage.css'
+
 function IngredientCategoriesPage() {
   const dispatch = useDispatch()
-    console.log('dispatched')
+    
   useEffect(() => {
-    console.log('entered useEffect')
+    
     dispatch(getCategoriesThunk())
   }, [dispatch])
 
 
-//   console.log('inside useSelector', state.categories.ingredient_categories)
     const categories = useSelector(state => state.ingredientCategories.ingredient_categories)
-    // console.log('ingredientcategories: categories', categories)
-    // const images = useSelector(state => state.categories.ingredient_categories)
-    // console.log('images', images)
+
   return(
     <div>
       <div className='category_nav_container'>
-        <ul className='category_nav'>
+        <div className='category_header'>
+          <h1>Ingredients</h1>
+          <p>The Cocktail Party app helps you find drinks you can make from the stuff you've got around the house — everything from fancy eau-de-vie to everyday pantry staples.</p>
+        </div>
+        <div className='category_nav'>
           {categories?.map((category) => (
-            <>
-            <img key={category.image_url} src={category.image_url} alt=''/>
-            <Link key={category?.id} to={`/ingredient-category/${category?.id}`}><li key={category.id}>{category.name}</li></Link>
-            </>
+            <a key={category?.name.toString()} href={`/ingredient-category/${category?.id}`}><img src={category.image_url} alt=''/><h4>{category.name}</h4></a>
           ))}
-        </ul>
-        {/* <div>
-            {categories?.map((category) => (
-            <img key={category.id} src={category.image_url} alt=''/>
-            ))}
-        </div> */}
+        </div>
       </div>
     </div>
   )

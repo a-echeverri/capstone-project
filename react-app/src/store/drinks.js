@@ -88,7 +88,7 @@ export const createDrinkThunk = (drink) => async (dispatch) => {
       const data = await response.json();
       console.log("data", data);
       if (data.errors) {
-        return;
+        return data.errors;
       }
   
       dispatch(createDrinkAction(data));

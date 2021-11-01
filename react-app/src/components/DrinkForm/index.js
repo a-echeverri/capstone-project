@@ -40,7 +40,11 @@ const DrinkForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('submit category', category)
+   
+    if (!name) {
+      setErrors(["Name is required"]);
+    }
+
     const newDrink = {
       name,
       drink_category_id: +category,
@@ -53,15 +57,22 @@ const DrinkForm = () => {
     }
     console.log('new drink', newDrink);
 
-    const lastDrink = await dispatch(createDrinkThunk(newDrink));
-    console.log('last drink', lastDrink);
-    history.push(`/drinks/${lastDrink.id}`)
+   
+    const data = await dispatch(createDrinkThunk(newDrink));
+    if (data){
+      return history.push(`/drinks/${data.id}`)
+    }
+    else {
+      setErrors(['Drink already exists']);
+      
     // history.push(`/drinks`)
     }
 
+  };
+
 return (
     <form onSubmit={handleSubmit} className='drinkForm'>
-      <div>
+      <div className='errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -73,7 +84,6 @@ return (
           name="name"
           onChange={(e) => { setName(e.target.value)}}
           value={name}
-          required={true}
         ></input>
       </div>
       <div>
@@ -83,6 +93,7 @@ return (
           name="description"
           onChange={(e) => { setDescription(e.target.value)}}
           value={description}
+          required
         ></input>
       </div>
       <div>
@@ -92,6 +103,7 @@ return (
           name="ingredients"
           onChange={(e) => { setIngredients(e.target.value)}}
           value={ingredients}
+          required
         ></input>
       </div>
       <div>
@@ -101,6 +113,7 @@ return (
           name="instructions"
           onChange={(e) => { setInstructions(e.target.value)}}
           value={instructions}
+          required
         ></input>
       </div>
       <div>

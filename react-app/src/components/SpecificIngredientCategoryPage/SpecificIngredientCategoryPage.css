@@ -4,20 +4,7 @@
     font-size: 40px;
 } */
 
-.back-link {
-    color: rgb(68, 68, 68);
-    font-family: 'Roboto', sans-serif;
-    display: block;
-    box-sizing: border-box;
-    color: #a91418;
-    margin-top: 40px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.drink_category_nav img {
+.ingredient_category_nav img {
     width: auto;
     height: 150px;
 /*     
@@ -27,28 +14,7 @@
 
 }
 
-.drinks-header {
-    margin-top: 0px;
-}
-
-.drink_category_nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    padding: 0px 32px 96px 32px;
-}
-
-.drink_category_nav a {
-    text-decoration: none;
-    color: rgb(68, 68, 68);
-    font-family: 'Roboto', sans-serif;
-}
-
-.drink-category-nav-container{
-    margin: 0px 124.5px 0px 124.5px;
-}
-
-.drink_category_header{
+.ingredient_category_header{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,7 +26,44 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.drink_category_header h1 {
+.ingredients-header{
+    /* margin-top: 0px; */
+    font-family: 'Yellowtail', cursive;
+}
+
+.ingredient-category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding: 0px 32px 96px 32px;
+}
+
+.ingredient_category_nav a {
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+    font-family: 'Roboto', sans-serif;
+    width: 150px;
+    height: 178px;
+    margin: 0px 48px 48px 48px;
+}
+
+/* .category_nav_container{
+    margin: 0px 124.5px 0px 124.5px;
+} */
+
+/* .category_header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 25px 0px 25px;
+    padding-left: 15px;
+    padding-right:15px;
+    color: rgb(68, 68, 68);
+    font-family: 'Roboto', sans-serif;
+} */
+
+.ingredient_category_header h1 {
     color: rgb(68, 68, 68);
     font-family: 'Yellowtail', cursive;
     font-size: 80px;
@@ -72,25 +75,19 @@
 }
 
 
-.drink_category_nav a{
+.category_nav img{
     width: 150px;
-    height: 178px;
-    margin: 0px 48px 48px 48px;
+    height: 150px;
 }
 
-
-.drink_category_nav li{
-    text-align: center;
-}
-
-.drink_category_nav h4{
+.ingredient_category_nav h4{
     text-align: center;
     color: rgb(68, 68, 68);
     font-family: 'Roboto', sans-serif;
 }
 
-/* .drink_a {
+.ingredient_a {
     text-decoration: none;
     color: rgb(68, 68, 68);
     font-family: 'Roboto', sans-serif;
-} */
+}

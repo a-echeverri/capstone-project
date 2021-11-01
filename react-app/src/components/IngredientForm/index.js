@@ -43,13 +43,14 @@ const IngredientForm = () => {
         user_id: user.id
       }
       console.log('new ingredient', newIngredient)
-      setErrors([]);
+      // setErrors([]);
       const data = await dispatch(createIngredientThunk(newIngredient));
       console.log('last ingredient', data);
       if (data){
-      history.push(`/ingredients/${data.id}`)
+        history.push(`/ingredients/${data.id}`)
+      }  else {
+        setErrors(["Ingredient already exists"]);
       }
-      // history.push(`/ingredients`)
 
     }
 
@@ -60,13 +61,15 @@ return (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div clasname='labels'>
         <label>Name</label>
         <input
           type="text"
           name="name"
           onChange={(e) => { setName(e.target.value)}}
           value={name}
+          required={true}
+
         ></input>
       </div>
       <div>
@@ -76,6 +79,8 @@ return (
           name="description"
           onChange={(e) => { setDescription(e.target.value)}}
           value={description}
+          required={true}
+
         ></input>
       </div>
       <div>
@@ -94,7 +99,7 @@ return (
           type="text"
           onChange={(e) => { setImage(e.target.value)}}
           value={image}
-          // required={true}
+          required={true}
         ></input>
       </div>
       <button type="submit" className='submit-btn'>Create ingredient</button>

@@ -5,6 +5,7 @@ import { getCategoriesThunk } from "../../store/ingredientCategories";
 import { getCategoryIngredientsThunk } from "../../store/ingredientCategories";
 import { getIngredientsThunk } from '../../store/ingredients'
 // import {  getCategoryIngredientsThunk } from '../../store/ingredient'
+import './SpecificIngredientCategoryPage.css'
 
 function SpecificIngredientCategoryPage() {
   const dispatch = useDispatch()
@@ -15,7 +16,12 @@ function SpecificIngredientCategoryPage() {
   console.log('specific category entered useEffect')
   console.log('categoryId', categoryId)
     dispatch(getCategoryIngredientsThunk(categoryId))
+    // dispatch(getCategoriesThunk())
   }, [dispatch, categoryId])
+
+  // useEffect(() => {
+  //   dispatch(getCategoriesThunk())
+  // }, [dispatch])
 
   // useEffect(() => {
   //   console.log('specific ingredient entered  useEffect')
@@ -27,25 +33,29 @@ function SpecificIngredientCategoryPage() {
   // const categories = useSelector(state => state.ingredientCategories.ingredient_categories)
   // const ingredients = useSelector(state => state.ingredients.ingredients?.ingredients)
   const ingredients = useSelector(state => state.ingredientCategories.ingredients?.ingredients)
+  const categories = useSelector(store => store.ingredientCategories?.ingredient_categories)
 
   console.log('ingredients', ingredients)
+  console.log('categories', categories)
  
   return(
-      <>
     <div>
-      <div className='category_nav_container'>
-        {console.log('ingredients render', ingredients)}
-        <ul className='category_nav'>
+      <div className='ingredient_category_nav_container'>
+        <div className='ingredient_category_header'>
+          <a href={`/ingredient-category`} className="back-link">← Return to Ingredients</a>
+          <h1 className='ingredients-header'>Ingredient</h1> 
+        </div>
+        <div className='ingredient_category_nav'>
+          <ul className='ingredient-category-nav'>
           {ingredients?.map((ingredient) => (
-            <>
-            <img key={ingredient.image_url} src={ingredient.image_url} alt=''/>
-            <Link key={ingredient.id} to={`/ingredients/${ingredient.id}`}><li>{ingredient.name}</li></Link>
-            </>
+            <Link className='ingredient_a' key={ingredient?.id.toString()} to={`/ingredients/${ingredient.id}`}><img key={ingredient.image_url} src={ingredient.image_url} alt=''/>
+              <h4>{ingredient.name}</h4>
+            </Link> 
           ))}
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
-    </>
   )
 
 

@@ -6,6 +6,16 @@ from colors import *
 
 drink_category_routes = Blueprint('drink_category', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 # api/drinks
 @drink_category_routes.route('')
 def get_all_drink_categories():
@@ -68,8 +78,8 @@ def new_drink():
         return drink.to_dict()
     else: 
         print('DRINK FORM FAILED')
-        print(form.data)
-        return form.errors
+        print(form.errors)
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # /api/drinks/:id/edit
 @drink_category_routes.route('/<int:id>', methods=['PUT'])
@@ -113,3 +123,4 @@ def delete_drink(id):
         return {
             'deleted_drink': deleted_drink.to_dict()
         }
+

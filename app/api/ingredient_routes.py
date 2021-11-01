@@ -6,6 +6,16 @@ from colors import *
 
 ingredient_routes = Blueprint('ingredient', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+    
 # /api/ingredients
 @ingredient_routes.route('')
 def get_all_ingredients():
@@ -112,12 +122,3 @@ def delete_ingredient(id):
             'deleted_ingredient': deleted_ingredient.to_dict()
         }
 
-def validation_errors_to_error_messages(validation_errors):
-    """
-    Simple function that turns the WTForms validation errors into a simple list
-    """
-    errorMessages = []
-    for field in validation_errors:
-        for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
-    return errorMessages

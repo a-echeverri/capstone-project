@@ -10,8 +10,8 @@ class Drink(db.Model):
     drink_category_id = db.Column(db.Integer, db.ForeignKey('drink_categories.id'), nullable=False)
     description = db.Column(db.Text)
     # trying nullable until ingredients/amount idea
-    ingredients = db.Column(db.String(50))
-    amount_unit = db.Column(db.String(50))
+    ingredients = db.Column(db.Text)
+    amount_unit = db.Column(db.Text)
     instructions = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

@@ -1,41 +1,34 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getDrinkCategoriesThunk } from "../../store/drinkCategories";
-// import './CategoryList.css'
+import './DrinkCategoriesPage.css'
 
 function DrinkCategoriesPage() {
   const dispatch = useDispatch()
-    console.log('dispatched')
+    
   useEffect(() => {
-    console.log('entered useEffect')
+    
     dispatch(getDrinkCategoriesThunk())
   }, [dispatch])
 
 
-//   console.log('inside useSelector', state.categories.drink_categories)
     const categories = useSelector(state => state.drinkCategories.drink_categories)
-    console.log('categories', categories)
-    // const images = useSelector(state => state.categories.drink_categories)
-    // console.log('images', images)
+
   return(
     <div>
       <div className='category_nav_container'>
-        <ul className='category_nav'>
+        <div className='category_header'>
+          <h1>Drinks</h1>
+          <p>The Cocktail Party app contains hundreds of kitchen-tested, guaranteed-delicious cocktail recipes sourced from historic bar manuals and up-and-coming mixologists, along with perfected recipes for classic cocktails.</p>
+        </div>
+        <div className='category_nav'>
           {categories?.map((category) => (
-            <>
-            <img key={category.image_url} src={category.image_url} alt=''/>
-            <Link key={category?.id} to={`/drink-category/${category.id}`}>
-              <li key={category.name}>{console.log(category?.id)}{category.name}</li>
-            </Link>
-            </>
+            <a key={category?.name.toString()} href={`/drink-category/${category?.id}`}>
+            <img src={category.image_url} alt=''/>
+              <h4>{category.name}</h4>
+            </a>
           ))}
-        </ul>
-        {/* <div>
-            {categories?.map((category) => (
-            <img key={category.id} src={category.image_url} alt=''/>
-            ))}
-        </div> */}
+        </div>
       </div>
     </div>
   )

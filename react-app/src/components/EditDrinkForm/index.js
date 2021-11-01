@@ -96,6 +96,7 @@ const EditDrinkForm = () => {
             setIngredients(e.target.value);
           }}
           value={ingredients}
+          required={true}
         ></input>
       </div>
       <div>
@@ -105,6 +106,7 @@ const EditDrinkForm = () => {
           name="instructions"
           onChange={(e) => { setInstructions(e.target.value)}}
           value={instructions}
+          required={true}
         ></input>
       </div>      
       <div>

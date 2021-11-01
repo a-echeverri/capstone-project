@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {useHistory, useParams, Link } from "react-router-dom";
 // import { getCategoriesThunk } from "../../store/drinkCategories";
 import { getDrinksThunk, getCategoryDrinksThunk } from '../../store/drinks'
-// import './CategoryList.css'
+import './SpecificDrinkCategoryPage.css'
 
 function SpecificDrinkCategoryPage() {
   const dispatch = useDispatch()
@@ -28,21 +28,24 @@ function SpecificDrinkCategoryPage() {
   console.log('drinks', drinks)
  
   return(
-      <>
     <div>
-      <div className='category_nav_container'>
-        {/* {console.log(drinks.name)} */}
-        <ul className='category_nav'>
+      <div className='drink-category-nav-container'>
+        <div className='drink_category_header'>
+          <a href={`/drinks`} className="back-link">← Return to Drinks</a>
+          <h1 className='drinks-header'>Drinks</h1>
+        </div>
+        <div className='drink_category_nav'>
+          <ul className='drink_category_nav'>
           {drinks?.map((drink) => (
-            <>
-            <img key={drink.image_url} src={drink.image_url} alt=''/>
-            <Link key={drink.id} to={`/drinks/${drink.id}`}><li>{drink.name}</li></Link>
-            </>
+            <Link key={drink.id} to={`/drinks/${drink.id}`}>
+              <img key={drink.image_url} src={drink.image_url} alt=''/>
+              <h4>{drink.name}</h4>
+            </Link>
           ))}
         </ul>
-      </div>
+        </div>
     </div>
-    </>
+   </div>
   )
 
 

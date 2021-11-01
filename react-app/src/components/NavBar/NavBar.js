@@ -18,6 +18,16 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <>
+          <li>
+          <NavLink to='/drinks/new' exact={true} activeClassName='active'>
+            Add Drink
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/ingredients/new' exact={true} activeClassName='active'>
+            Add Ingredient
+          </NavLink>
+        </li> 
         <div className="user-container">
           <button type="button" className="user-button">
             <NavLink to={`/users/${sessionUser.id}`}>Profile Page</NavLink>
@@ -52,48 +62,35 @@ const NavBar = () => {
     <nav className='navbar'>
       <div className="navbar-container">
         <div className="navbar-header">
-          <button className="navbar-button">
-            <NavLink to='/' exact={true} className='navbar-brand'>
-             Cocktail Party
-           </NavLink>
-          </button>
-          {startProject}
+          <div className="navbar-left">
+            <button className="navbar-button">
+              <NavLink to='/' exact={true} className='navbar-brand'>
+              Cocktail Party
+            </NavLink>
+            </button>
+          <div className="nav-bar-center">
+            <li>
+              <NavLink to='/drinks' exact={true} activeClassName='active'>
+                Drinks
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/ingredient-category' exact={true} activeClassName='active'>
+                Ingredients
+              </NavLink>
+            </li> 
+          </div>
+          </div>       
+            {/* <li>
+              <NavLink to='/users' exact={true} activeClassName='active'>
+              Users
+              </NavLink>
+            </li> */}
         </div>
-      <div className="nav-bar-center">
-        <div className="nav-bar-center-logo">
-        <ul>
-        <li>
-          <NavLink to='/drinks' exact={true} activeClassName='active'>
-            Drinks
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/ingredient-category' exact={true} activeClassName='active'>
-            Ingredients
-          </NavLink>
-        </li>        
-        <li>
-          <NavLink to='/drinks/new' exact={true} activeClassName='active'>
-            Add Drink
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/ingredients/new' exact={true} activeClassName='active'>
-            Add Ingredient
-          </NavLink>
-        </li> 
-        {/* <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li> */}
-        </ul>
+        <div className="nav-bar-right">
+          {/* <SearchBar /> */}
+          {sessionLinks}
         </div>
-      </div>
-      <div className="nav-bar-right">
-        {/* <SearchBar /> */}
-        {sessionLinks}
-      </div>
       </div>
     </nav>
   );
