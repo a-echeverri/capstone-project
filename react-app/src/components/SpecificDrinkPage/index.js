@@ -64,12 +64,12 @@ const SpecificDrinkPage = () => {
                         <h4 className="drink-instructions">INSTRUCTIONS</h4>
                         <p className="drink-instructions">{drinks?.instructions}</p>
                     </div>
-                    <div className='drink-page-container'>
+
+                </div>
+                <div className='drink-page-container'>
                         <EditDeleteDrink />
                     </div>
-                </div>
             </div>
-
         </div>
     );
 };
