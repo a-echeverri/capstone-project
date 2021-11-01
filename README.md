@@ -1,134 +1,50 @@
-# Flask React Project
 
-This is the starter for the Flask React project.
+# Cocktail Party
 
-## Getting started
+Cocktail Party is inspired by the app Cocktail Party that allows users to find cocktail recipes based on different categories and different ingredients that can be used in cocktails. Logged in users can also create their own cocktails and ingredients to be added to the app.
 
-1. Clone this repository (only this branch)
+Users are able register for their own accounts, allowing them to create their own cocktails to share with images and instructions. Other registered users are then able to find these drinks. Users without accounts are still able to view all cocktails and ingredients, which are organized by category.
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+## Link to live project on Heroku
 
-2. Install dependencies
+https://cocktail-party-app.herokuapp.com/
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+## Link to wiki docs
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+https://github.com/a-echeverri/capstone-project/wiki
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+## Homepage
+![](https://i.imgur.com/V986mqW.png)
 
-   ```bash
-   pipenv shell
-   ```
+## Technologies Used
+* Redux
+* HTML/CSS
+* React
+* Flask
+* Postgresql
+* SQLAlchemy
+* Alembic
 
-   ```bash
-   flask db upgrade
-   ```
+## Discussion of technologies used
 
-   ```bash
-   flask seed all
-   ```
+A wide variety of technologies are used in this project. In the back end, Flask-SQLAlchemy was used to manage the database. Flask helped
+to build and implement the API routes. WTForms was used to provide seamless backend validations for forms. When 
+designing the front end, React's powerful HTML syntax was used along with CSS to create a functional and attractive app. Finally, Redux was used to manage and manipulate the state, producing dynamic pages and quick refreshing.
 
-   ```bash
-   flask run
-   ```
+## Challenges
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+* Mantaining and manipulating state
+  * The React-Redux flow can be challenging to use so there was a lot of study to properly manage multiple slices of states and understand how the stores' action and thunks work together. 
+* Using a Python-based backend with a JS-based frontend
+  * Python was chosen for building the backend through Flask, but managing how the data flows and the movement of data to the Javascript-based frontend was sometimes hard to follow. Issues with parsing data types unique to Python and ensuring the JSON requests were properly structured was the top priority.
+ * Error Handling
+   *  Figuring out which way to handle errors either through the WTForms validation with custom messages or through front end error mapping took some time to decide. 
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+## Future Features
+* I would like to implement a way to save cocktails to favorites for easy viewing in your profile. Also the ability to get recommendations based on what ingredients are in your favorites.
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+## Contact
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
-
-   ```bash
-   heroku login
-   ```
-
-6. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
-
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+Andres Echeverri:
+* Email - aecheverri43@gmail.com
+* LinkedIn - https://www.linkedin.com/in/andresecheverri
